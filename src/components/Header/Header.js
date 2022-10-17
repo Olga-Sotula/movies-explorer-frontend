@@ -10,13 +10,13 @@ function Header({loggedIn, email, onLogout}) {
   return (
     <header className = {`header ${pathname === '/' ? 'header_type_main' : ''}`} >
       <nav className="header__navigator">
-        <Link to='/'>
+        <Link className = "header__link-logo" to='/'>
           <img className = "header__logo" src = {logoPath} alt = "Лого" / >
         </Link>
-          {<ul className="list navbar">
+          {<ul className="header__list">
             {loggedIn && <li className="link">{email}</li>}
             {loggedIn && <li className="link  link-trans" onClick={onLogout}>Выйти</li>}
-            {!loggedIn && <li><Link className="link link-trans" to="/signup">Регистрация</Link></li>}
+            {loggedIn && <li><Link className="header__link" to="/signup">Регистрация</Link></li>}
             {!loggedIn && pathname === "/sign-up" && <li><Link className="link link-trans" to="/sign-in">Войти</Link></li>}
     </ul>}
       </nav>
