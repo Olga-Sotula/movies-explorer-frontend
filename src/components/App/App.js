@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom'
 
 import './App.css';
@@ -12,9 +12,11 @@ import Login from '../Login/Login.js';
 import Register from '../Register/Register.js';
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+
   return (
     <div className="page">
-      <Header/>
+      <Header loggedIn={loggedIn} />
       {/*<Switch>
         <Route exact path="/">
           <Main/>
