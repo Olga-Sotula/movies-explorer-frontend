@@ -1,0 +1,15 @@
+@import url(../../vendor/normalize.css);
+@import url(../../vendor/fonts/inter.css);
+
+.page {
+  width: 100vw;
+  min-height: 100vh;
+  min-width: 320px;
+  margin: 0 auto;
+  background-color: red;
+  color: var(--primary-color);
+  font-family: 'Inter', Arial, sans-serif;
+
+  --primary-color: #000
+
+}

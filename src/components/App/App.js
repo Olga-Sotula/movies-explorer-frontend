@@ -1,17 +1,21 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom'
 
-import Main from "../Main/Main";
-import Movies from '../Movies/Movies';
-import SavedMovies from '../SavedMovies/SavedMovies';
-import Profile from '../Profile/Profile';
-import Login from '../Login/Login';
-import Register from '../Register/Register';
+import './App.css';
+
+import Header from '../Header/Header.js';
+import Main from "../Main/Main.js";
+import Movies from '../Movies/Movies.js';
+import SavedMovies from '../SavedMovies/SavedMovies.js';
+import Profile from '../Profile/Profile.js';
+import Login from '../Login/Login.js';
+import Register from '../Register/Register.js';
 
 function App() {
   return (
     <div className="page">
-      <Switch>
+      <Header/>
+      {/*<Switch>
         <Route exact path="/">
           <Main/>
         </Route>
@@ -30,7 +34,7 @@ function App() {
         <Route path="/signup">
           <Register/>
         </Route>
-      </Switch>
+  </Switch>*/}
     </div>
   );
 }
