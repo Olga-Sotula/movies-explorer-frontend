@@ -11,7 +11,7 @@ const NavTab = () => {
       <a class="navtab__link" href="#techs">
         Технологии
       </a>
-      <a class="navtab__link" href="#student">
+      <a class="navtab__link" href="#about-me">
         Студент
       </a>
     </nav>
