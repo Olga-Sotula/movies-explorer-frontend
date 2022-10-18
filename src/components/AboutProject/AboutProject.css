@@ -1,0 +1,59 @@
+.about-project {
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+.about-project__cards {
+  padding-top: 70px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 110px;
+}
+
+.about-project__card-title {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+}
+
+.about-project__card-description {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.about-project__diagram {
+  display: grid;
+  box-sizing: border-box;
+
+  grid-template-columns: 20% 80%;
+
+}
+
+.about-project__stage {
+
+}
+
+.about-project__stage-time {
+  padding: 9px 0;
+  background-color:  #f2f2f2;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}
+
+.about-project__stage-time_type_primary {
+  background-color:  #2be080;
+}
+
+.about-project__stage-description {
+  color: #a0a0a0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}
