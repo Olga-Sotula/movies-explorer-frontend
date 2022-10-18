@@ -1,6 +1,12 @@
-function Main() {
+import React from "react";
+
+import Promo from "../Promo/Promo.js";
+
+import "./Main.css";
+
+const Main = () => {
   return(
-    <dev>О проекте</dev>
+    <Promo/>
   );
 }
 

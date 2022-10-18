@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="page">
       <Header loggedIn={loggedIn} />
-      {/*<Switch>
+      {<Switch>
         <Route exact path="/">
           <Main/>
         </Route>
@@ -36,7 +36,7 @@ function App() {
         <Route path="/signup">
           <Register/>
         </Route>
-  </Switch>*/}
+  </Switch>}
     </div>
   );
 }

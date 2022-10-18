@@ -9,7 +9,7 @@
   background-color: red;
   color: var(--primary-color);
   font-family: 'Inter', Arial, sans-serif;
-
+  font-style: normal;
   --primary-color: #000
 
 }
