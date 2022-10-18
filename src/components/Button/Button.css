@@ -1,0 +1,57 @@
+.button {
+  box-sizing: border-box;
+  padding: 8px 20px;
+
+  /*outline: none;*/
+
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 1.5s ease-in;
+}
+
+.button:hover {
+  opacity: 0.6;
+}
+
+.button_type_primary {
+  color: #000;
+  background-color: #2BE080;
+}
+
+/*.button:active {
+  transform: scale(0.9);
+}
+
+.button_type_blue {
+  background-color: #4285f4;
+}
+
+.button_type_red {
+  background-color: #ee3465;
+}
+
+.button_type_submit {
+  width: 100%;
+  padding: 13px 0;
+  border-radius: 3px;
+  font-size: 14px;
+  line-height: 1.21;
+  margin-bottom: 18px;
+}
+
+.button_type_disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+@media (max-width: 500px) {
+  .button_type_submit {
+    font-size: 12px;
+  }
+}*/
