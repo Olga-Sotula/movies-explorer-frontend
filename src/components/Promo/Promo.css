@@ -1,6 +1,6 @@
 .promo {
-  margin: 0 auto;
-  height: calc(100vh - 74px);
+  margin: auto;
+  height: calc(100vh - 74px - 66px);
   box-sizing: border-box;
   background-color: #073042;
   display: flex;
