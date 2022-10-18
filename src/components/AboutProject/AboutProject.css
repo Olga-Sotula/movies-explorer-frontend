@@ -28,9 +28,7 @@
 .about-project__diagram {
   display: grid;
   box-sizing: border-box;
-
   grid-template-columns: 20% 80%;
-
 }
 
 .about-project__stage {

@@ -1,10 +1,7 @@
 import React from "react";
 
-//import Container from "../Container/Container";
-//import TextCard from "../TextCard/TextCard";
-//import Roadmap from "../Roadmap/Roadmap";
 import SectionTitle from "../SectionTitle/SectionTitle";
-//import { diplomaTextCards } from "../../utils/constants";
+
 import "./AboutProject.css";
 
 const AboutProject = () => {
