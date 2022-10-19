@@ -3,7 +3,6 @@ import React from "react";
 import SectionTitle from "../SectionTitle/SectionTitle";
 
 import photoPath from '../../images/avatar.jpg';
-import Portfolio from "../Portfolio/Portfolio";
 import "./AboutMe.css";
 
 const AboutMe = () => {
@@ -29,7 +28,6 @@ const AboutMe = () => {
         </div>
         <img className="about-me__photo" src={photoPath} alt="Фото" />
       </article>
-      <Portfolio/>
     </section>
   );
 };

@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 125px 70px;
+  padding: 125px 70px 82px;
   box-sizing: border-box;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .about-me__description {
-  margin: 23px 0 147px;
+  margin: 27px 0 164px;
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;
