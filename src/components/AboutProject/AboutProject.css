@@ -1,16 +1,16 @@
 .about-project {
   margin: 0 auto;
+  padding: 110px 70px;
+  box-sizing: border-box;
   max-width: 1280px;
-  background-color: red;
 }
 
 .about-project__cards {
-  padding-top: 70px;
+  margin-top: 50px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 40px;
-  margin-bottom: 110px;
+  gap: 50px;
 }
 
 .about-project__card-title {
@@ -21,19 +21,17 @@
 }
 
 .about-project__card-description {
+  margin-top: 25px;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
 }
 
 .about-project__diagram {
+  margin-top: 83px;
   display: grid;
   box-sizing: border-box;
   grid-template-columns: 20% 80%;
-}
-
-.about-project__stage {
-
 }
 
 .about-project__stage-time {

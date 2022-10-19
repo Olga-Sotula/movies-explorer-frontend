@@ -13,9 +13,9 @@ const Main = () => {
     <main className="main">
       <Promo/>
       <NavTab/>
-      {/*<AboutProject/>
+      <AboutProject/>
       <Techs/>
-  <AboutMe/>*/}
+ {/* <AboutMe/>*/}
     </main>
   );
 }
