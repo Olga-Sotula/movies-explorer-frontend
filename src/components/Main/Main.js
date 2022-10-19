@@ -10,13 +10,13 @@ import "./Main.css";
 
 const Main = () => {
   return(
-    <>
+    <main className="main">
       <Promo/>
-      <NavTab/>
+      {/*<NavTab/>
       <AboutProject/>
       <Techs/>
-      <AboutMe/>
-    </>
+  <AboutMe/>*/}
+    </main>
   );
 }
 
