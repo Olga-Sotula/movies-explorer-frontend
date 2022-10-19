@@ -10,6 +10,7 @@ import SavedMovies from '../SavedMovies/SavedMovies.js';
 import Profile from '../Profile/Profile.js';
 import Login from '../Login/Login.js';
 import Register from '../Register/Register.js';
+import Footer from '../Footer/Footer';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -36,7 +37,8 @@ function App() {
         <Route path="/signup">
           <Register/>
         </Route>
-  </Switch>}
+      </Switch>}
+      <Footer/>
     </div>
   );
 }
