@@ -10,10 +10,10 @@ const Techs = () => {
       <SectionTitle>
         Технологии
       </SectionTitle>
-      <div className="techs__card">
+      <article className="techs__card">
         <h3 className="techs__card-title">7 технологий</h3>
         <p className="techs__card-description">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
-      </div>
+      </article>
       <ui className="techs__labels">
         <li className="techs__label">HTML</li>
         <li className="techs__label">CSS</li>
