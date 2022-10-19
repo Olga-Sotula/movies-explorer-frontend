@@ -1,6 +1,6 @@
 .header {
   margin: 0 auto;
-  background-color: #fff;
+  background-color: var(--secondary-color);
   box-sizing: border-box;
 }
 

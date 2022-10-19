@@ -13,8 +13,8 @@
   font-size: 13px;
   line-height: 16px;
   text-align: center;
-  color: #A0A0A0;
-  border-bottom: 1px solid #e8e8e8;
+  color: var(--dghost-color);
+  border-bottom: 1px solid var(--ghost-color);
 }
 
 .footer__content {

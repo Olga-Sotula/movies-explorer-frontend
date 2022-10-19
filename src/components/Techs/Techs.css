@@ -44,7 +44,7 @@
   height: 60px;
   padding: 21px 0;
   box-sizing: border-box;
-  background-color: #e8e8e8;
+  background-color: var(--ghost-color);
   border-radius: 10px;
   font-weight: 400;
   font-size: 14px;

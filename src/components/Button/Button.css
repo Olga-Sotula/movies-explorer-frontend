@@ -2,7 +2,7 @@
   box-sizing: border-box;
   padding: 8px 20px;
   background-color: transparent;
-  color: #fff;
+  color: var(--secondary-color);
   border: none;
   border-radius: 3px;
   font-size: 12px;
@@ -17,9 +17,9 @@
   opacity: 0.6;
 }
 
-.button_type_primary {
-  color: #000;
-  background-color: #2BE080;
+.button_type_accent {
+  color: var(--primary-color);
+  background-color: var(--accent-color);
 }
 
 /*.button:active {

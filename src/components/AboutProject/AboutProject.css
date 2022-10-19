@@ -36,7 +36,7 @@
 
 .about-project__stage-time {
   padding: 9px 0;
-  background-color:  #f2f2f2;
+  background-color:  var(--lghost-color);
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
@@ -44,11 +44,11 @@
 }
 
 .about-project__stage-time_type_primary {
-  background-color:  #2be080;
+  background-color:  var(--accent-color);
 }
 
 .about-project__stage-description {
-  color: #a0a0a0;
+  color: var(--dghost-color);
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;

@@ -26,7 +26,7 @@ const Header = ({loggedIn, email, onLogout}) => {
           </li>}
           {!loggedIn && <li>
             <Link to="/signin">
-              <Button modificator="button_type_primary">
+              <Button modificator="button_type_accent">
                 Войти
               </Button>
             </Link>

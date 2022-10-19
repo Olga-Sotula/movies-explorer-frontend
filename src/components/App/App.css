@@ -5,10 +5,15 @@
   min-width: 320px;
   min-height: 100vh;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: var(--secondary-color);
   color: var(--primary-color);
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
-  --primary-color: #000
 
+  --primary-color: #000;
+  --secondary-color: #fff;
+  --ghost-color: #e8e8e8;
+  --dghost-color: #a0a0a0;
+  --lghost-color: #f2f2f2;
+  --accent-color: #2BE080;
 }
