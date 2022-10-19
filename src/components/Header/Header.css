@@ -1,5 +1,5 @@
 .header {
-  max-width: 1280px;
+  margin: 0 auto;
   background-color: #fff;
   box-sizing: border-box;
 }

@@ -1,6 +1,7 @@
 .about-project {
   margin: 0 auto;
   max-width: 1280px;
+  background-color: red;
 }
 
 .about-project__cards {

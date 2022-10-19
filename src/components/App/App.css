@@ -2,11 +2,10 @@
 @import url(../../vendor/fonts/inter.css);
 
 .page {
-  width: 100vw;
-  min-height: 100vh;
   min-width: 320px;
+  min-height: 100vh;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: red;
   color: var(--primary-color);
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
