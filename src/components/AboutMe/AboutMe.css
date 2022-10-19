@@ -1,6 +1,9 @@
 .about-me {
-  margin: 0 auto;
+  width: 100%;
   max-width: 1280px;
+  margin: 0 auto;
+  padding: 125px 70px;
+  box-sizing: border-box;
 }
 
 .about-me__card {
@@ -10,12 +13,11 @@
 }
 
 .about-me__profile {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  margin-top: 61px;
 }
 
 .about-me__name {
+  margin: 0;
   font-weight: 400;
   font-size: 50px;
   line-height: 58px;
@@ -23,6 +25,7 @@
 }
 
 .about-me__about {
+  margin: 20px 0 0;
   font-weight: 500;
   font-size: 18px;
   line-height: 20px;
@@ -31,6 +34,7 @@
 }
 
 .about-me__description {
+  margin: 23px 0 147px;
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;
@@ -47,6 +51,7 @@
 .about-me__photo {
   width: 270px;
   height: 327px;
+  margin-top: 62px;
   object-fit: cover;
   border-radius: 10px;
 }

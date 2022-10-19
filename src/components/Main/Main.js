@@ -15,7 +15,7 @@ const Main = () => {
       <NavTab/>
       <AboutProject/>
       <Techs/>
- {/* <AboutMe/>*/}
+      <AboutMe/>
     </main>
   );
 }

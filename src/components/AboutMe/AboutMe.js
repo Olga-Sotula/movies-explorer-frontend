@@ -12,7 +12,7 @@ const AboutMe = () => {
       <SectionTitle>
         Студент
       </SectionTitle>
-      <div className="about-me__card">
+      <article className="about-me__card">
         <div className="about-me__profile">
           <div>
             <h3 className="about-me__name">Ольга</h3>
@@ -28,7 +28,7 @@ const AboutMe = () => {
           </a>
         </div>
         <img className="about-me__photo" src={photoPath} alt="Фото" />
-      </div>
+      </article>
       <Portfolio/>
     </section>
   );
