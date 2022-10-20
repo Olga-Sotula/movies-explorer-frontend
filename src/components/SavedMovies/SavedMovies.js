@@ -1,6 +1,10 @@
-function SavedMovies() {
+import React from 'react';
+
+import MoviesList from '../MoviesList/MoviesList';
+
+const SavedMovies = () => {
   return (
-    <div>Сохранённые фильмы</div>
+    <MoviesList isSaved = {true} />
   );
 }
 

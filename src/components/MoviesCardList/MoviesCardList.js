@@ -4,7 +4,7 @@ import MoviesCard from '../MoviesCard/MoviesCard.js';
 import Button from '../Button/Button.js';
 import './MoviesCardList.css';
 
-export default function MoviesCardList({ cards }) {
+const MoviesCardList = ({ cards, isSaved }) => {
   return (
     <section className='cards'>
     <ul className='cards__list'>
@@ -18,3 +18,5 @@ export default function MoviesCardList({ cards }) {
     </section>
   )
 }
+
+export default MoviesCardList;
