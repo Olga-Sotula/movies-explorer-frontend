@@ -1,6 +1,15 @@
-function Movies() {
+import React, { useState } from 'react';
+
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import './Movies.css';
+import { movies } from '../../utils/constants/Movies.js';
+
+const Movies = () => {
+  const [isProcessing, setIsProcessing] = useState(false);
   return (
-    <div>Фильмы</div>
+    <main className='movies'>
+      <MoviesCardList cards={movies} /> :
+    </main>
   );
 }
 
