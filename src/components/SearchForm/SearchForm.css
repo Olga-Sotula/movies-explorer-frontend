@@ -1,6 +1,7 @@
 .search-form {
   flex-grow: 1;
-  padding: 19px;
+  margin-left: 25px;
+  padding: 5px 0 5px 20px ;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
