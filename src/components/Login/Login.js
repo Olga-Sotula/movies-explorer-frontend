@@ -1,7 +1,11 @@
-function Login() {
+import React from 'react'
+
+import Auth from '../Auth/Auth';
+
+const Login = () => {
   return (
-    <div>Login</div>
-  );
+    <Auth type = 'signin'/>
+  )
 }
 
 export default Login;
