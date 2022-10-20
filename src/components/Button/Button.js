@@ -3,7 +3,7 @@ import React from "react";
 import "./Button.css";
 
 const Button = ({
-  modificator,
+  modificator = '',
   children
 }) => {
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, useLocation } from 'react-router-dom'
 
 import './App.css';
 
@@ -13,11 +13,15 @@ import Register from '../Register/Register.js';
 import Footer from '../Footer/Footer';
 
 function App() {
+  const { pathname } = useLocation();
   const [loggedIn, setLoggedIn] = useState(false);
+
+  const isHeader = pathname !== '/signin' && pathname !== '/signup' ? true : false;
+  const isFooter = pathname !== '/signin' && pathname !== '/signup' ? true : false;
 
   return (
     <div className="page">
-      <Header loggedIn={loggedIn} />
+      { isHeader && <Header loggedIn={loggedIn} />}
       {<Switch>
         <Route exact path="/">
           <Main/>
@@ -38,7 +42,7 @@ function App() {
           <Register/>
         </Route>
       </Switch>}
-      <Footer/>
+      {isFooter && <Footer/>}
     </div>
   );
 }

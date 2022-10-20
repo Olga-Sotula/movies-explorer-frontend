@@ -46,6 +46,13 @@
   text-align: center;
 }
 
+.button_type_auth-link {
+  margin-left: 6px;
+  text-decoration: none;
+  color: #3456f3;
+}
+
+
 /*.button:active {
   transform: scale(0.9);
 }

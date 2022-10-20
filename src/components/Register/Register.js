@@ -1,7 +1,11 @@
-function Register () {
+import React from 'react'
+
+import Auth from '../Auth/Auth';
+
+const Register = () => {
   return (
-    <div>Register</div>
-  );
+    <Auth type = 'signup'/>
+  )
 }
 
 export default Register;
