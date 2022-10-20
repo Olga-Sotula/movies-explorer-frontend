@@ -37,6 +37,15 @@
   background-color: #f9f9f9;
 }
 
+.button_type_alarm {
+  width: 100%;
+  color: #ff004d;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+}
+
 /*.button:active {
   transform: scale(0.9);
 }
