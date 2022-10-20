@@ -1,0 +1,12 @@
+.nav-menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.nav-menu__icon {
+  width: 100px;
+  height: 32px;
+}

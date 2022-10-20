@@ -12,7 +12,6 @@ export default function MoviesCard({ card }) {
         <h2 className='card__title'>
           {card.nameRU}
         </h2>
-
         <button
         className={`card__like-button ${card.liked ? 'card__button-like-active' : ''}`}
         type='button'/>

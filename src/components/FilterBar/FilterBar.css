@@ -1,0 +1,12 @@
+.filter-bar {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 61px 0 69px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--ghost-color);
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}

@@ -22,6 +22,21 @@
   background-color: var(--accent-color);
 }
 
+.button_type_nav-menu {
+  color: var(--primary-color);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.button_type_else {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1280px;
+  color: var(--primary-color);
+  background-color: #f9f9f9;
+}
+
 /*.button:active {
   transform: scale(0.9);
 }
