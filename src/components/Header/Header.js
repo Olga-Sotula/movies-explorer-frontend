@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import logoPath from '../../images/header-logo.svg';
 import { Link, useLocation } from 'react-router-dom'
 
 import './Header.css';

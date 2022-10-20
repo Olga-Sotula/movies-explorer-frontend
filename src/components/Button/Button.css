@@ -46,10 +46,12 @@
   text-align: center;
 }
 
-.button_type_auth-link {
-  margin-left: 6px;
-  text-decoration: none;
+.button_type_link {
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
   color: #3456f3;
+  text-decoration: none;
 }
 
 

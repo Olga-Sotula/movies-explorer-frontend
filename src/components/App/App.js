@@ -11,13 +11,14 @@ import Profile from '../Profile/Profile.js';
 import Login from '../Login/Login.js';
 import Register from '../Register/Register.js';
 import Footer from '../Footer/Footer';
+import NotFound from '../NotFound/NotFound';
 
 function App() {
   const { pathname } = useLocation();
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const isHeader = pathname !== '/signin' && pathname !== '/signup' ? true : false;
-  const isFooter = pathname !== '/signin' && pathname !== '/signup' ? true : false;
+  const isHeader = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' ? true : false;
+  const isFooter = isHeader;
 
   return (
     <div className="page">
@@ -40,6 +41,9 @@ function App() {
         </Route>
         <Route path="/signup">
           <Register/>
+        </Route>
+        <Route path="*">
+          <NotFound />
         </Route>
       </Switch>}
       {isFooter && <Footer/>}
