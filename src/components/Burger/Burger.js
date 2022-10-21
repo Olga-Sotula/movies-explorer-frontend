@@ -1,12 +1,16 @@
 import React from 'react';
 import './Burger.css';
 
-export default function Burger({ clicked, handleClick }) {
+const Burger = ({ isOpen, handleClick }) => {
   return (
-    <div className={`burger ${clicked ? 'burger_cross' : ''}`} onClick={() => handleClick()}>
-      <div className='burger__dash'></div>
-      <div className='burger__dash'></div>
-      <div className='burger__dash'></div>
+    <div className={`burger ${isOpen ? 'burger_menu-open' : ''}`} onClick={() => handleClick()}>
+      <span className='burger__span'></span>
+      <span className='burger__span'></span>
+      <span className='burger__span'></span>
     </div>
   )
 }
+
+export default Burger;
+
+
