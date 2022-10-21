@@ -17,8 +17,8 @@ function App() {
   const { pathname } = useLocation();
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const isHeader = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' ? true : false;
-  const isFooter = isHeader;
+  const isHeader = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile' ? true : false;
+  const isFooter = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' ? true : false;
 
   return (
     <div className="page">
