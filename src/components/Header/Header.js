@@ -1,20 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom'
+import React from 'react';
+import { useLocation } from 'react-router-dom'
 
 import './Header.css';
-import HeaderLogo from '../HeaderLogo/HeaderLogo';
-import NavAuth from '../NavAuth/NavAuth.js';
-import NavMenu from '../NavMenu/NavMenu.js';
+import Navigation from '../Navigation/Navigation';
 
-const Header = ({loggedIn, email, onLogout}) => {
+const Header = () => {
   const { pathname } = useLocation();
 
   return (
     <header className = {`header ${pathname === '/' ? 'header_type_main' : ''}`} >
-      <nav className="header__navigator">
-        <HeaderLogo/>
-        {pathname === '/' ? <NavAuth/> : <NavMenu/>}
-      </nav>
+      <Navigation/>
     </header>
   );
 }
