@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom'
 
 import './Header.css';
+import HeaderLogo from '../HeaderLogo/HeaderLogo';
 import Navigation from '../Navigation/Navigation';
 
 const Header = () => {
@@ -9,7 +10,10 @@ const Header = () => {
 
   return (
     <header className = {`header ${pathname === '/' ? 'header_type_main' : ''}`} >
-      <Navigation/>
+      <nav className='header__navigator'>
+        <HeaderLogo/>
+        <Navigation/>
+      </nav>
     </header>
   );
 }
