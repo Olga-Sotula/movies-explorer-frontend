@@ -53,6 +53,36 @@
 
 @media screen and (max-width: 600px) {
   .footer {
-    display: none;
+    padding: 118px 0 0;
+  }
+
+  .footer__header {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+
+  .footer__content {
+    margin-top: 20px;
+    flex-direction: column-reverse;
+    align-items: center;
+
+  }
+
+  .footer__links {
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .footer__link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .footer__copyright {
+    margin-top: 30px;
+    font-size: 12px;
+    line-height: 15px;
   }
 }

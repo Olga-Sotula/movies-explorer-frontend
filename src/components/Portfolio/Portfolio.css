@@ -50,11 +50,32 @@
     padding: 0 50px;
   }
 
+  .portfolio__list {
+    gap: 18px;
+  }
+
   .portfolio__title {
     margin: 22px 0 0;
   }
 
   .portfolio__item {
     font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .portfolio {
+    padding: 0 14px;
+  }
+
+  .portfolio__title {
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .portfolio__item {
+    padding: 12px 0;
+    font-size: 18px;
+    line-height: 28px;
   }
 }

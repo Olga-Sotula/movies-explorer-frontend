@@ -81,3 +81,29 @@
     margin-top: 75px;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .techs {
+    padding: 61px 18px;
+  }
+
+  .techs__card {
+    margin: 63px auto 0;
+  }
+
+  .techs__card-title {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .techs__card-description {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .techs__labels {
+    margin: 50px auto;
+    padding: 0 30px;
+  }
+}
+

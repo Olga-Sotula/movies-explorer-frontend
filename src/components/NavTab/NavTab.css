@@ -20,3 +20,9 @@
   text-decoration: none;
   border-bottom: 1px solid var(--secondary-color);
 }
+
+@media screen and (max-width: 600px) {
+  .navtab {
+    gap: 20px;
+  }
+}
