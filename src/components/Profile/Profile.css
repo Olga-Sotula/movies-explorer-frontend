@@ -69,4 +69,14 @@
   background-color: transparent;
 }
 
+@media screen and (max-width: 800px) {
+  .profile__form {
+    margin: 236px auto;
+  }
+
+  .profile__fieldset {
+    margin: 96px 0 195px;
+  }
+}
+
 
