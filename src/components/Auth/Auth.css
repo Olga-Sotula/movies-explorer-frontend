@@ -1,16 +1,16 @@
 .auth {
   margin: 0 auto;
   max-width: 1280px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .auth__form {
-  margin: 0 auto;
+  margin: 60px auto 0;
   max-width: 414px;
   min-width: 414px;
-  margin-top: 60px;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -71,6 +71,14 @@
   line-height: 1.21;
   text-align: center;
   color: var(--dghost-color);
+}
+
+@media screen and (max-width: 800px) {
+  .auth__form {
+    margin: 230px auto;
+
+
+  }
 }
 
 
