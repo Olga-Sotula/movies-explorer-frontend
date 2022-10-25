@@ -10,3 +10,12 @@
   align-items: center;
   gap: 50px;
 }
+
+@media screen and (max-width: 800px) {
+  .filter-bar {
+    margin: 62px auto;
+    padding: 0 0 76px 0;
+    flex-direction: column;
+    gap: 38px;
+  }
+}
