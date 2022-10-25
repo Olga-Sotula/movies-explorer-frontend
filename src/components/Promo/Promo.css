@@ -22,3 +22,10 @@
   letter-spacing: -0.04em;
 }
 
+@media screen and (max-width: 800px) {
+  .promo {
+    height: 784px;
+    padding-top: 328px;
+    background-position: left 50% top 225px;
+  }
+}

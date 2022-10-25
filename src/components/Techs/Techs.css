@@ -53,3 +53,31 @@
   text-align: center;
   letter-spacing: -0.04em;
 }
+
+@media (max-width: 800px) {
+  .techs__label {
+    width: 84px;
+    height: 57px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .techs {
+    padding: 73px 50px;
+  }
+
+  .techs__card {
+    margin: 83px auto 0;
+  }
+
+  .techs__card-description {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .techs__labels {
+    margin-top: 75px;
+  }
+}

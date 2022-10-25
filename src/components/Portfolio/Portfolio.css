@@ -44,3 +44,17 @@
   color: var(--primary-color);
   text-decoration: none;
 }
+
+@media screen and (max-width: 800px) {
+  .portfolio {
+    padding: 0 50px;
+  }
+
+  .portfolio__title {
+    margin: 22px 0 0;
+  }
+
+  .portfolio__item {
+    font-size: 28px;
+  }
+}
