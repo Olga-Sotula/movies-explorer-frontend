@@ -19,3 +19,10 @@
     gap: 38px;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .filter-bar {
+    margin: 62px auto 22px;
+
+  }
+}

@@ -40,3 +40,14 @@
   }
 }
 
+@media screen and (max-width: 600px) {
+  .search-form {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .search-form__input {
+    font-size: 11px;
+  }
+}
+
