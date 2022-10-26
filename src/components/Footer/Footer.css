@@ -43,6 +43,13 @@
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 1.5s ease-in;
+}
+
+.footer__link:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 800px) {

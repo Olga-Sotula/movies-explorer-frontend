@@ -47,6 +47,13 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 1.5s ease-in;
+}
+
+.about-me__github:hover {
+  opacity: 0.6;
 }
 
 .about-me__photo {

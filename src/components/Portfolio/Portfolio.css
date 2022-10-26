@@ -38,11 +38,25 @@
   line-height: 50px;
   letter-spacing: -0.04em;
   border-bottom: 1px solid var(--ghost-color);
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 1.5s ease-in;
+}
+
+.portfolio__item:hover {
+  opacity: 0.6;
 }
 
 .portfolio__arrow {
   color: var(--primary-color);
   text-decoration: none;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 1.5s ease-in;
+}
+
+.portfolio__arrow:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 800px) {
