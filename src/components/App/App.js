@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom'
 
 import './App.css';
@@ -15,14 +15,13 @@ import NotFound from '../NotFound/NotFound';
 
 function App() {
   const { pathname } = useLocation();
-  const [loggedIn, setLoggedIn] = useState(false);
 
   const isHeader = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile' ? true : false;
   const isFooter = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' ? true : false;
 
   return (
     <div className="page">
-      { isHeader && <Header loggedIn={loggedIn} />}
+      { isHeader && <Header />}
       {<Switch>
         <Route exact path="/">
           <Main/>

@@ -8,7 +8,7 @@ import FilterBar from '../FilterBar/FilterBar.js';
 
 const MoviesList = ({ isSaved }) => {
   const [isProcessing, setIsProcessing] = useState(false);
-
+  setIsProcessing(false);
   return (
     <main className='movies'>
       <FilterBar/>

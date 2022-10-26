@@ -2,8 +2,6 @@ import React from 'react';
 import './MoviesCard.css';
 
 export default function MoviesCard({ card }) {
-  // Определяем, являемся ли мы владельцем текущей карточки
-  const isOwn = false;
 
   return (
     <div className='card'>

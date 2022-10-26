@@ -22,7 +22,7 @@ const AboutMe = () => {
               Я изучаю веб-разработку с 2022 года. Мне нравится создавать красивые и удобные приложения.
             </p>
           </div>
-          <a className="about-me__github" href='https://github.com/Olga-Sotula' target='_blank'>
+          <a className="about-me__github" href='https://github.com/Olga-Sotula' target='_blank' rel="noreferrer">
             Github
           </a>
         </div>
