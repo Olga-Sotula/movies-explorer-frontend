@@ -31,7 +31,7 @@ const Auth = ({ type }) => {
   return (
     <section className='auth'>
       <form className='auth__form' name='profile' onSubmit={handleSubmit}>
-        <HeaderLogo/>
+        <div className='auth__logo-bar'><HeaderLogo/></div>
         <h2 className='auth__title'>{titleText}</h2>
 
         <fieldset className='auth__fieldset'>
