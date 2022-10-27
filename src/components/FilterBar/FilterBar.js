@@ -9,7 +9,7 @@ const FilterBar = () => {
   return (
     <section className='filter-bar'>
       <SearchForm/>
-      <FilterCheckBox/>
+      <FilterCheckBox modificator="filter-checkbox_type_in-bar"/>
     </section>
   );
 }

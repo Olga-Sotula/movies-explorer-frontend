@@ -38,8 +38,23 @@
   line-height: 18px;
 }
 
+.filter-checkbox_type_in-form {
+  display: flex;
+}
+
+.filter-checkbox_type_in-bar {
+  display: none;
+}
 
 @media screen and (max-width: 600px) {
+  .filter-checkbox_type_in-form {
+    display: none;
+  }
+
+  .filter-checkbox_type_in-bar {
+    display: flex;
+  }
+
   .filter-checkbox__text {
     font-size: 11px;
   }
