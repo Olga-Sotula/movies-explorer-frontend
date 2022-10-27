@@ -26,12 +26,10 @@ const NavMenu = () => {
           </li>
         </ul>
         <div className='nav-menu__profile'>
-            <Link to='/profile'>
-              <Button modificator="button_type_nav-menu">
-                Аккаунт
-              </Button>
-              <img src={profileIconPath} className='nav-menu__icon' alt='Иконка профиля' />
-            </Link>
+          <Link to='/profile'>
+            <img src={profileIconPath} className='nav-menu__icon' alt='Иконка профиля' />
+              Аккаунт
+          </Link>
         </div>
       </nav>
 

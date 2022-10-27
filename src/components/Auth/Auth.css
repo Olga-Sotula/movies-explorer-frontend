@@ -45,7 +45,7 @@
   font-size: 13px;
   line-height: 16px;
   background: #f9f9f9;
-  border-color: var(--dghost-color);
+  border: none;
   border-radius: 8px;
 }
 

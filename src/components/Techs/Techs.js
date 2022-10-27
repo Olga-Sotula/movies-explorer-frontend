@@ -14,7 +14,7 @@ const Techs = () => {
         <h3 className="techs__card-title">7 технологий</h3>
         <p className="techs__card-description">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
       </article>
-      <ui className="techs__labels">
+      <ul className="techs__labels">
         <li className="techs__label">HTML</li>
         <li className="techs__label">CSS</li>
         <li className="techs__label">JS</li>
@@ -22,7 +22,7 @@ const Techs = () => {
         <li className="techs__label">Git</li>
         <li className="techs__label">Express.js</li>
         <li className="techs__label">mongoDB</li>
-      </ui>
+      </ul>
     </section>
   );
 };
