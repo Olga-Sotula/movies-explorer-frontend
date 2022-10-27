@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 import { useLocation } from 'react-router-dom'
 
 import './Navigation.css';
+import HeaderLogo from '../HeaderLogo/HeaderLogo.js'
 import NavAuth from '../NavAuth/NavAuth.js';
 import NavMenu from '../NavMenu/NavMenu.js';
+import NavProfile from '../NavProfile/NavProfile.js';
 import Burger from '../Burger/Burger';
 import PopupMenu from '../PopupMenu/PopupMenu';
 
@@ -27,9 +29,11 @@ const Navigation = () => {
 
   return (
     <>
+      <HeaderLogo/>
       {pathname === '/' ? <NavAuth/> :
         <>
           <NavMenu/>
+          <NavProfile/>
           <Burger isOpen={popupIsOpen} handleClick={handleBurgerClick}/>
           <PopupMenu isOpen={popupIsOpen} onOverlayClick={handlePopupOverlayClick} onClose={closePopup}/>
         </>

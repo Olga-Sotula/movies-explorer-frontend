@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   display: flex;
+
   gap: 25px;
 }
 
@@ -14,11 +15,6 @@
 
 .nav-menu__list_type_movies {
   gap: 10px;
-}
-
-.nav-menu__icon {
-  width: 11px;
-  height: 14px;
 }
 
 @media (max-width: 800px) {
