@@ -19,7 +19,6 @@
   border-width: 0;
   border-radius: 6px;
   outline: none;
-
 }
 
 .search-form__submit {
@@ -27,12 +26,18 @@
   height: 34px;
   padding: 0;
   flex-shrink: 0;
-  cursor: pointer;
   border-style: none;
   border-radius: 50%;
   background-color: #3456f3;
   background-image: url(../../images/search-icon.svg);
   background-position: center;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 1.5s ease-in;
+}
+
+.search-form__submit:hover {
+  opacity: 0.6;
 }
 
 .search-form__divider {
