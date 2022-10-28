@@ -12,14 +12,14 @@ const NavMenu = () => {
       <ul className='nav-menu__list nav-menu__list_movies'>
         <li>
           <Link to="/movies">
-            <Button modificator="button_type_nav-menu">
+            <Button modificator="button_type_nav-movies">
               Фильмы
             </Button>
           </Link>
         </li>
         <li>
           <Link to="/saved-movies">
-            <Button modificator="button_type_nav-menu">
+            <Button modificator="button_type_nav-movies">
               Сохраненные фильмы
             </Button>
           </Link>

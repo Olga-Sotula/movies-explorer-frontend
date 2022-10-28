@@ -1,8 +1,8 @@
 .nav-menu {
   margin: 0;
+  margin-left: 64px;
   padding: 0;
   display: flex;
-
   gap: 25px;
 }
 
@@ -11,10 +11,7 @@
   padding: 0;
   list-style: none;
   display: flex;
-}
 
-.nav-menu__list_type_movies {
-  gap: 10px;
 }
 
 @media (max-width: 800px) {
