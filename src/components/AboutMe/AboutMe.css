@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 125px 70px 82px;
+  padding: 108px 58px 82px 70px;
   box-sizing: border-box;
 }
 
@@ -13,7 +13,7 @@
 }
 
 .about-me__profile {
-  margin-top: 61px;
+  margin-top: 64px;
 }
 
 .about-me__name {

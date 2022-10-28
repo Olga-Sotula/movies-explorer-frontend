@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 87px 70px;
+  padding: 87px 60px 87px 70px;
   box-sizing: border-box;
   background-color: #f5f5f5;
 }
@@ -31,6 +31,7 @@
 
 .techs__labels {
   margin-top: 100px;
+  padding:0;
   list-style: none;
   display: flex;
   flex-direction: row;
