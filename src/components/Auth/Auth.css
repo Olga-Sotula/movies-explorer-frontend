@@ -8,23 +8,23 @@
 }
 
 .auth__form {
-  margin: 60px auto 0;
-  max-width: 414px;
-  min-width: 414px;
+  margin: 70px auto 0;
+  padding: 0 0 0 15px;
+  min-width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
 .auth__title {
-  margin: 50px 0 00;
+  margin: 34px 0 0 0;
   font-weight: 500;
   font-size: 24px;
   line-height: 29px;
 }
 
 .auth__fieldset {
-  margin: 22px 0 0;
+  margin: 22px 0 90px 0;
   padding: 0;
   border: none;
 }
@@ -72,7 +72,7 @@
 
 .auth__quest {
   width: 100%;
-  margin: 16px 0 0;
+  margin: 12px 0 0 15px;
   font-size: 14px;
   line-height: 17px;
   text-align: center;
