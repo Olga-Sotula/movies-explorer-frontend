@@ -22,8 +22,9 @@ const Profile = ( ) => {
 
   return (
     <section className='profile'>
-      <form className='profile__form' name='profile' onSubmit={handleSubmit}>
-        <h2 className='profile__title'>{`Привет, ${currentUser.name}!`}</h2>
+      <div className='profile__content'>
+        <form className='profile__form' name='profile' onSubmit={handleSubmit}>
+          <h2 className='profile__title'>{`Привет, ${currentUser.name}!`}</h2>
           <fieldset className='profile__fieldset'>
             <label
               className="profile__label">
@@ -35,14 +36,15 @@ const Profile = ( ) => {
                 minLength={2}
                 maxLength={30}
                 required
-                className='profile__input profile__input_type_name'
+                className='profile__input'
                 onChange={handleChange}
                 value={formValues.name}
               />
             </label>
+            <div className='profile__divider'></div>
             <label
               className="profile__label">
-              E-mail
+              Email
               <input
                 type='email'
                 id='email'
@@ -67,6 +69,7 @@ const Profile = ( ) => {
             </Button>
           </Link>
         </form>
+      </div>
     </section>
   )
 }

@@ -1,16 +1,18 @@
 .profile {
-  margin: 0 auto;
-  max-width: 1280px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
 }
 
-.profile__form {
+.profile__content {
   margin: 0 auto;
-  max-width: 414px;
-  min-width: 414px;
-  margin-top: 75px;
+  max-width: 1280px;
+  min-width: 408px;
+}
+
+.profile__form {
+  width: 100%;
+  min-height: 482px;
+  margin-top: 73px;
   display: flex;
   flex-direction: column;
 }
@@ -31,26 +33,31 @@
 
 .profile__label {
   display: flex;
-  flex-direction: row;
   font-weight: 500;
   font-size: 11px;
   line-height: 13px;
 }
 
 .profile__input {
-  width: 80%;
+  width: 100%;
+  margin-left: 8px;
   font-weight: 400;
   font-size: 11px;
   line-height: 13px;
   text-align: right;
+  border-radius: 6px;
   border: none;
   outline: none;
 }
 
-.profile__input_type_name {
-  padding-bottom: 16px;
-  margin-bottom: 16px;
-  border-bottom: 1px solid var(--ghost-color);
+.profile__input:focus {
+  outline: 1px solid var(--accent);
+}
+
+.profile__divider {
+  height: 1px;
+  margin: 16px 0;
+  background-color: var(--ghost-color);
 }
 
 .profile__submit {
