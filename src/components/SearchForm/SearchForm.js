@@ -1,11 +1,13 @@
 import React from "react";
 
-import './SearchForm.css'
+import './SearchForm.css';
+import searchIconPath from '../../images/search-icon-input.svg';
 import FilterCheckBox from "../FilterCheckbox/FilterCheckbox";
 
 const SearchForm = () => {
   return (
     <form className='search-form'>
+      <img src={searchIconPath} alt='Лупа' className='search-form__icon' />
       <input className='search-form__input'
         type='text'
         placeholder='Фильм'
