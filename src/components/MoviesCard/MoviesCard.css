@@ -33,23 +33,33 @@
   line-height: 16px;
 }
 
-.card__like-button {
+.card__button {
   width: 24px;
   height: 24px;
   background-color: transparent;
   border: 0px;
-  background-image: url("../../images/like-icon.svg");
   background-size: 14px 12px;
   background-position: center;
   background-repeat: no-repeat;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 1.5s ease-in;
 }
 
-.photo__like:hover {
+.card__button:hover {
   opacity: .5;
 }
 
-.photo__like-button_active {
+.card__button_like {
+  background-image: url("../../images/like-icon.svg");
+}
+
+.card__button_liked {
   background-image: url("../../images/like-active-icon.svg");
+}
+
+.card:hover .card__button_delete {
+  background-image: url(../../images/cross.svg);
 }
 
 .card__duration {

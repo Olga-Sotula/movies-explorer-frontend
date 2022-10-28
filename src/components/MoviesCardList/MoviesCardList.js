@@ -10,7 +10,7 @@ const MoviesCardList = ({ cards, isSaved }) => {
       <ul className='cards__list'>
         {cards.map(card => (
           <li key={card.id}>
-            <MoviesCard card={card} />
+            <MoviesCard card={card} isSaved={isSaved}/>
           </li>
         ))}
       </ul>
