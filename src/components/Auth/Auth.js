@@ -16,6 +16,7 @@ const Auth = ({ type }) => {
   const linkText = type === 'signup' ? 'Войти' : 'Регистрация';
   const linkTo = type === 'signup' ? '/signin' : 'signup';
   const isNameField = type === 'signup' ? true : false;
+  const fieldsetClassName= type === 'signup' ? 'auth__fieldset' : 'auth__fieldset auth__fieldset_type_login';
 
   function handleChange(evt) {
     const {name, value} = evt.target;
@@ -34,7 +35,7 @@ const Auth = ({ type }) => {
         <div className='auth__logo-bar'><HeaderLogo/></div>
         <h2 className='auth__title'>{titleText}</h2>
 
-        <fieldset className='auth__fieldset'>
+        <fieldset className={fieldsetClassName}>
         {isNameField &&
           <>
             <label
