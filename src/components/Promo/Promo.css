@@ -47,10 +47,14 @@
 
 @media screen and (max-width: 600px) {
   .promo {
-    height: 630px;
-    padding-top: 182px;
+    padding-top: 134px;
     background-position: left 50% bottom 40px;
+  }
 
+  .promo__content {
+    height: 496px;
+    padding: 50px 10px 10px;
+    background-position: center bottom 40px;
   }
 
   .promo__title {

@@ -87,6 +87,10 @@
     font-size: 14px;
   }
 
+  .portfolio__list {
+    gap: 15px;
+  }
+
   .portfolio__item {
     padding: 12px 0;
     font-size: 18px;
