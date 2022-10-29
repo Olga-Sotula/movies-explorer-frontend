@@ -61,7 +61,7 @@
   }
 
   .about-project__cards {
-    gap: 40px;
+    gap: 38px;
   }
 
   .about-project__card-description {
@@ -70,7 +70,7 @@
   }
 
   .about-project__diagram {
-    margin-top: 67px;
+    margin-top: 64px;
   }
 }
 

@@ -65,7 +65,7 @@
   }
 
   .portfolio__list {
-    gap: 18px;
+    gap: 0;
   }
 
   .portfolio__title {
