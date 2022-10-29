@@ -3,7 +3,6 @@
   flex-direction: column;
   justify-content: space-between;
   align-content: stretch;
-  height: 281px;
   background-color: #fdfdfd;
   border-radius: 6px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
@@ -71,22 +70,22 @@
 }
 
 @media screen and (max-width: 800px) {
-  .card {
-    height: 262px;
-  }
-
   .card__img {
     height: 190px;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .card {
-    height: 237px;
-  }
-
   .card__img {
     height: 168px;
+  }
+
+  .card__footer {
+    padding: 6px 10px 0px 20px;
+  }
+
+  .card__duration {
+    margin: 0 10px 10px 10px;
   }
 }
 

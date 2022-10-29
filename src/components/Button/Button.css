@@ -88,5 +88,8 @@
     line-height: 15px;
   }
 
+  .button_type_else {
+    margin: 0 auto 32px;
+  }
 }
 

@@ -30,7 +30,9 @@
 
 @media screen and (max-width: 600px) {
   .cards__list {
+    margin: 0 auto 86px;
     padding: 0 10px;
+    row-gap: 16px;
   }
 }
 

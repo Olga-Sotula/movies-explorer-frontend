@@ -12,12 +12,6 @@
   z-index: 2;
 }
 
-@media (max-width: 800px) {
-  .burger {
-    display: flex;
-  }
-}
-
 .burger__span {
   margin: 0;
   padding: 0;
@@ -53,4 +47,19 @@
 .burger_menu-open .burger__span:last-of-type {
   background-color: #000;
   transform: rotate(-45deg);
+}
+
+@media screen and (max-width: 800px) {
+  .burger {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .burger {
+    width: 38px;
+    height: 40px;
+    top: 17px;
+    right: 18px;
+  }
 }
