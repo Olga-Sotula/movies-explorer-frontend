@@ -66,6 +66,12 @@
   text-decoration: none;
 }
 
+@media screen and (max-width: 800px) {
+  .button_type_else {
+    margin: 0 auto 22px;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .button {
     padding: 5px 12px;

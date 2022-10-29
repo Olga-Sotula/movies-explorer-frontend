@@ -9,14 +9,19 @@
   padding: 0;
   list-style: none;
   display: grid;
+  justify-content: space-between;
   grid-template-columns: repeat(auto-fill, minmax(277px, 1fr));
   column-gap: 22px;
   row-gap: 36px;
 }
 
 @media screen and (max-width: 800px) {
+  .cards {
+    padding: 36px 20px 0;
+  }
+
   .cards__list {
-    margin: 0 auto 56px;
+    margin: 0 auto 74px;
     padding: 0 30px;
     column-gap: 30px;
     row-gap: 32px;
