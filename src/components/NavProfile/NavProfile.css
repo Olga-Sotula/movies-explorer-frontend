@@ -24,7 +24,7 @@
 }
 
 @media (max-width: 800px) {
-  .nav-profile {
+  .nav-profile_type_header {
     display: none;
   }
 }

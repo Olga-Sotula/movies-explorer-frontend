@@ -29,6 +29,13 @@
   line-height: 18px;
 }
 
+.button_type_popup-menu {
+  color: var(--primary-color);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+}
+
 .button_type_nav-movies {
   padding: 8px 8px;
   color: var(--primary-color);
@@ -91,5 +98,10 @@
   .button_type_else {
     margin: 0 auto 32px;
   }
+
+  .button_type_popup-menu {
+    margin-bottom: 15px;
+  }
+
 }
 

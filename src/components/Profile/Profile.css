@@ -86,4 +86,18 @@
   }
 }
 
+@media screen and (max-width: 600px) {
+  .profile__content {
+    min-width: 300px;
+  }
+
+  .profile__form {
+    margin: 70px auto;
+  }
+
+  .profile__fieldset {
+    margin: 80px 18px 364px;
+  }
+}
+
 

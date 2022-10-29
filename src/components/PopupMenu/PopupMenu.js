@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import { Link } from 'react-router-dom';
 
 import Button from "../Button/Button";
+import NavProfile from "../NavProfile/NavProfile";
 import './PopupMenu.css'
 
 const PopupMenu = ({isOpen, onOverlayClick, onClose}) => {
@@ -27,21 +28,21 @@ const PopupMenu = ({isOpen, onOverlayClick, onClose}) => {
         <ul className='popup__list'>
           <li>
             <Link to="/">
-              <Button modificator="button_type_nav-menu" onClick={onClose}>
+              <Button modificator="button_type_popup-menu" onClick={onClose}>
                 Главная
               </Button>
             </Link>
           </li>
           <li>
             <Link to="/movies">
-              <Button modificator="button_type_nav-menu" onClick={onClose}>
+              <Button modificator="button_type_popup-menu" onClick={onClose}>
                 Фильмы
               </Button>
             </Link>
           </li>
           <li>
             <Link to="/saved-movies">
-              <Button modificator="button_type_nav-menu" onClick={onClose}>
+              <Button modificator="button_type_popup-menu" onClick={onClose}>
                 Сохраненные фильмы
               </Button>
              </Link>
@@ -49,11 +50,7 @@ const PopupMenu = ({isOpen, onOverlayClick, onClose}) => {
         </ul>
         <ul className='popup__list'>
           <li>
-            <Link to='/profile'>
-              <Button modificator="button_type_nav-menu" onClick={onClose}>
-                Аккаунт
-              </Button>
-            </Link>
+            <NavProfile/>
           </li>
         </ul>
       </nav>

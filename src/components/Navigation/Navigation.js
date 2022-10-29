@@ -33,7 +33,7 @@ const Navigation = () => {
       {pathname === '/' ? <NavAuth/> :
         <>
           <NavMenu/>
-          <NavProfile/>
+          <NavProfile modificator="nav-profile_type_header"/>
           <Burger isOpen={popupIsOpen} handleClick={handleBurgerClick}/>
           <PopupMenu isOpen={popupIsOpen} onOverlayClick={handlePopupOverlayClick} onClose={closePopup}/>
         </>
