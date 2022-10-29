@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 64px;
+  gap: 50px;
 }
 
 .about-project__card-title {
@@ -32,7 +32,6 @@
   display: grid;
   box-sizing: border-box;
   grid-template-columns: 20% 80%;
-  gap: 9px;
 }
 
 .about-project__stage-time {
