@@ -10,6 +10,7 @@ const SearchForm = () => {
       <img src={searchIconPath} alt='Лупа' className='search-form__icon' />
       <input className='search-form__input'
         type='text'
+        required
         placeholder='Фильм'
         id='movie'
         name='movie'
