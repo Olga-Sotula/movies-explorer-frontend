@@ -84,6 +84,7 @@
 @media screen and (max-width: 600px) {
   .techs {
     padding: 61px 18px;
+    background-color: var(--secondary-color);
   }
 
   .techs__card {
