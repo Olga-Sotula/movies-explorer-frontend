@@ -53,6 +53,10 @@
   border-radius: 8px;
 }
 
+.auth__input:focus {
+  outline: 1px solid var(--input-focus-color);
+}
+
 .auth__submit {
   width: 100%;
   margin-top: 90px;
