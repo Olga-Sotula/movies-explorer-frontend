@@ -1,17 +1,17 @@
 .filter-checkbox {
   padding: 0;
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 2px;
+  gap: 14px;
 }
 
 .filter-checkbox__button {
   width: 36px;
   height: 20px;
   margin: 0;
-  margin-right: 12px;
   border: none;
   background-repeat: no-repeat;
   background-position: center center;
@@ -34,7 +34,7 @@
 }
 
 .filter-checkbox__text {
-  margin: auto;
+  margin: 0;
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;

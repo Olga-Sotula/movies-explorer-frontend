@@ -15,7 +15,7 @@ const SearchForm = () => {
         name='movie'
       />
       <button className='search-form__submit' type='submit' />
-      <span className='search-form__divider'/>
+      <div className='search-form__divider'></div>
       <FilterCheckBox modificator="filter-checkbox_type_in-form"/>
     </form>
   );
