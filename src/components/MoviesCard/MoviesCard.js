@@ -11,8 +11,8 @@ export default function MoviesCard({ card, isSaved }) {
           {card.nameRU}
         </h2>
         {isSaved ?
-          <button className='card__button card__button_delete'/> :
-          <button className={`card__button card__button_like ${card.liked ? 'card__button_liked' : ''}`}/>
+          <button type='button' className='card__button card__button_delete'/> :
+          <button type='button' className={`card__button card__button_like ${card.liked ? 'card__button_liked' : ''}`}/>
         }
       </div>
       <span className='card__duration'>{card.duration}</span>

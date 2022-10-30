@@ -64,7 +64,7 @@ const Profile = ( ) => {
             Редактировать
           </button>
           <Link to='/'>
-            <Button modificator="button_type_alarm">
+            <Button type='button' modificator="button_type_alarm">
               Выйти из аккаунта
             </Button>
           </Link>

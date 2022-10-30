@@ -28,21 +28,21 @@ const PopupMenu = ({isOpen, onOverlayClick, onClose}) => {
         <ul className='popup__list'>
           <li>
             <Link to="/">
-              <Button modificator="button_type_popup-menu" onClick={onClose}>
+              <Button type='button' modificator="button_type_popup-menu" onClick={onClose}>
                 Главная
               </Button>
             </Link>
           </li>
           <li>
             <Link to="/movies">
-              <Button modificator="button_type_popup-menu" onClick={onClose}>
+              <Button type='button' modificator="button_type_popup-menu" onClick={onClose}>
                 Фильмы
               </Button>
             </Link>
           </li>
           <li>
             <Link to="/saved-movies">
-              <Button modificator="button_type_popup-menu" onClick={onClose}>
+              <Button type='button' modificator="button_type_popup-menu" onClick={onClose}>
                 Сохраненные фильмы
               </Button>
              </Link>

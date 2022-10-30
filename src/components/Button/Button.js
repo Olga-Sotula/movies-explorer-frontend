@@ -3,11 +3,12 @@ import React from "react";
 import "./Button.css";
 
 const Button = ({
+  type,
   modificator = '',
   children
 }) => {
   return (
-    <button
+    <button type={type}
       className={`button ${modificator}`}
     >
       {children}

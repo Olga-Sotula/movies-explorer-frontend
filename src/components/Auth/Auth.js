@@ -91,7 +91,7 @@ const Auth = ({ type }) => {
         <p className='auth__quest'>
           {questText}
           <Link to={linkTo}>
-            <Button modificator='button_type_link'>
+            <Button type='button' modificator='button_type_link'>
               {linkText}
             </Button>
           </Link>

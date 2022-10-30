@@ -9,14 +9,14 @@ const NavAuth = () => {
     <ul className="nav-auth">
       <li>
         <Link to="/signup">
-          <Button>
+          <Button type='button' >
             Регистрация
           </Button>
         </Link>
       </li>
       <li>
         <Link to="/signin">
-          <Button modificator="button_type_accent">
+          <Button type='button' modificator="button_type_accent">
             Войти
           </Button>
         </Link>

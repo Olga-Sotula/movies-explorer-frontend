@@ -14,7 +14,7 @@ const MoviesCardList = ({ cards, isSaved }) => {
           </li>
         ))}
       </ul>
-      <Button modificator="button_type_else">Ещё</Button>
+      <Button type='button' modificator="button_type_else">Ещё</Button>
     </section>
   )
 }
