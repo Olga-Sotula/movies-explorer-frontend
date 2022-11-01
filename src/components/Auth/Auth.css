@@ -36,6 +36,7 @@
 .auth__label {
   margin-top: 20px;
   display: block;
+  position: relative;
   font-size: 10px;
   line-height: 1.2;
   color: var(--dghost-color);
@@ -51,6 +52,15 @@
   background: #f9f9f9;
   border: none;
   border-radius: 8px;
+}
+
+.auth__error {
+  margin: 0;
+  font-size: 10px;
+  line-height: 1;
+  color: #f00;
+  position: absolute;
+  bottom: -13px;
 }
 
 .auth__input:focus {

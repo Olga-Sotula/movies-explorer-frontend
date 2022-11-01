@@ -1,15 +1,37 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
+import { isValidName, isEmail, isNotEmpty, isValidLength } from '../../utils/validation';
+import useFormWithValidation from '../../hooks/useForm';
 import HeaderLogo from '../HeaderLogo/HeaderLogo';
 import Button from '../Button/Button';
-//import AuthForm from '../AuthForm/AuthForm';
 import './Auth.css';
 
-const Auth = ({ type, onSubmit, inProcessing }) => {
-  const [formValues, setFormValues] = useState({name: '', email:'', password: ''});
-  const [isValid, setIsValid] = useState(false);
+const getValidators = (type) => {
+  const res = [];
+  if (type === 'signin') {
+    res.push(({ name }) => isValidName(name) || { name: 'Имя должно содержать только латиницу, кириллицу, пробел или дефис.' });
+    res.push(({ name }) => isValidLength(name, 2, 30) || { name: 'Имя должно быть от 2 до 30 символов' });
+    res.push(({ name }) => (type === 'signin') || isNotEmpty(name) || { name: 'Обязательное поле' });
+  }
+  res.push(({ email }) => isEmail(email) || { email: 'email должен соответствовать шаблону электронной почты' });
+  res.push(({ email }) => isNotEmpty(email) || { email: 'Обязатеьное поле' });
+  res.push(({ password }) => isNotEmpty(password) || { password: 'Обязательное поле' });
+  return res;
+};
 
+const defaultValues = { name: '', email: '', password: '' };
+const defaultTouched = { name: false, email: false,  password: false };
+
+const Auth = ({ type, onSubmit, inProcessing }) => {
+  const { pathname } = useLocation();
+  const validators = getValidators(type);
+  const { values, handleChange, touched, errors, isValid, resetForm } = useFormWithValidation(
+    defaultValues, defaultTouched, validators);
+
+  useEffect(() => {
+    resetForm();
+  }, [pathname, resetForm]);
 
   const submitText = type === 'signup' ? 'Зарегистрироваться' : 'Войти';
   const titleText = type === 'signup' ? 'Добро пожаловать!' : 'Рады видеть!';
@@ -19,20 +41,12 @@ const Auth = ({ type, onSubmit, inProcessing }) => {
   const isNameField = type === 'signup' ? true : false;
   const fieldsetClassName= type === 'signup' ? 'auth__fieldset' : 'auth__fieldset auth__fieldset_type_login';
 
-  function handleChange(evt) {
-    const {name, value} = evt.target;
-    setFormValues(prevState => ({ ...prevState, [name]: value }));
-  }
-
   function handleSubmit(e) {
     // Запрещаем браузеру переходить по адресу формы
     e.preventDefault();
 
-    //Очищаем поля формы
-    setFormValues({name: '', email: '', password: ''});
-
     // Передаём значения управляемых компонентов во внешний обработчик
-    onSubmit(formValues.name, formValues.email, formValues.password);
+    onSubmit(values.name, values.email, values.password);
   }
 
 
@@ -49,48 +63,51 @@ const Auth = ({ type, onSubmit, inProcessing }) => {
               htmlFor='name'
               className='auth__label'>
               Имя
+              <input
+                type='text'
+                id='name'
+                name='name'
+                minLength={2}
+                maxLength={30}
+                required
+                className='auth__input'
+                onChange={handleChange}
+                value={values.name}
+              />
+              {touched.name && errors.name && <p className='auth__error'>{errors.name}</p>}
             </label>
-            <input
-              type='text'
-              id='name'
-              name='name'
-              minLength={2}
-              maxLength={30}
-              required
-              className='auth__input'
-              onChange={handleChange}
-              value={formValues.name}
-            />
           </>
         }
         <label
           htmlFor='email'
           className='auth__label'>
-          E-mail
+          email
+          <input
+            type='email'
+            id='email'
+            name='email'
+            required
+            className='auth__input'
+            onChange={handleChange}
+            value={values.email}
+          />
+          {touched.email && errors.email && <p className='auth__error'>{errors.email}</p>}
         </label>
-        <input
-          type='email'
-          id='email'
-          name='email'
-          required
-          className='auth__input'
-          onChange={handleChange}
-          value={formValues.email}
-        />
         <label
           htmlFor='password'
           className='auth__label'>
           Пароль
+          <input
+            type='password'
+            id='password'
+            name='password'
+            required
+            className='auth__input'
+            onChange={handleChange}
+            value={values.password}
+          />
+          {touched.password && errors.password && <p className='auth__error'>{errors.password}</p>}
         </label>
-        <input
-          type='password'
-          id='password'
-          name='password'
-          required
-          className='auth__input'
-          onChange={handleChange}
-          value={formValues.password}
-        />
       </fieldset>
         <button
           className='auth__submit'
