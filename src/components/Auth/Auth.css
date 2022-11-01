@@ -78,6 +78,11 @@
   opacity: 0.6;
 }
 
+.auth__submit:disabled {
+  background-color: var(--dghost-color);
+  cursor: auto;
+}
+
 .auth__quest {
   width: 100%;
   margin: 12px 0 0 15px;

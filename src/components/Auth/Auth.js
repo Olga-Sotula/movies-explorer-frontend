@@ -8,6 +8,7 @@ import './Auth.css';
 
 const Auth = ({ type, onSubmit, inProcessing }) => {
   const [formValues, setFormValues] = useState({name: '', email:'', password: ''});
+  const [isValid, setIsValid] = useState(false);
 
 
   const submitText = type === 'signup' ? 'Зарегистрироваться' : 'Войти';
@@ -91,7 +92,11 @@ const Auth = ({ type, onSubmit, inProcessing }) => {
           value={formValues.password}
         />
       </fieldset>
-        <button className='auth__submit' type='submit' onSubmit={handleSubmit}>
+        <button
+          className='auth__submit'
+          type='submit'
+          disabled={!isValid}
+          onSubmit={handleSubmit}>
           {submitText}
         </button>
         <p className='auth__quest'>
