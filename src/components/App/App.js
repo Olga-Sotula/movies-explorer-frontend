@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom'
 
 import './App.css';
 
+import ProtectedRoute from '../ProtectedRouter/ProtectedRouter';
 import Header from '../Header/Header.js';
 import Main from "../Main/Main.js";
 import Movies from '../Movies/Movies.js';
@@ -16,6 +17,8 @@ import NotFound from '../NotFound/NotFound';
 function App() {
   const { pathname } = useLocation();
 
+  const [loggedIn, setLoggedIn] = useState(false);
+
   const isHeader = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile' ? true : false;
   const isFooter = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' ? true : false;
 
@@ -23,18 +26,27 @@ function App() {
     <div className="page">
       { isHeader && <Header />}
       {<Switch>
-        <Route exact path="/">
-          <Main/>
-        </Route>
-        <Route path="/movies">
-          <Movies/>
-        </Route>
-        <Route path="/saved-movies">
-          <SavedMovies/>
-        </Route>
-        <Route path="/profile">
-          <Profile/>
-        </Route>
+        <ProtectedRoute
+          exact
+          path="/"
+          component={Main}
+          loggedIn={loggedIn}
+        />
+        <ProtectedRoute
+          path="/movies"
+          component={Movies}
+          loggedIn={loggedIn}
+        />
+        <ProtectedRoute
+          path="/saved-movies"
+          component={SavedMovies}
+          loggedIn={loggedIn}
+        />
+        <ProtectedRoute
+          path="/profile"
+          component={Profile}
+          loggedIn={loggedIn}
+        />
         <Route path="/signin">
           <Login/>
         </Route>
