@@ -3,6 +3,7 @@ import { Route, Switch, useLocation } from 'react-router-dom'
 
 import './App.css';
 
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRouter/ProtectedRouter';
 import Header from '../Header/Header.js';
 import Main from "../Main/Main.js";
@@ -18,12 +19,14 @@ function App() {
   const { pathname } = useLocation();
 
   const [loggedIn, setLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
 
   const isHeader = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile' ? true : false;
   const isFooter = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' ? true : false;
 
   return (
-    <div className="page">
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="page">
       { isHeader && <Header />}
       {<Switch>
         <ProtectedRoute
@@ -58,7 +61,8 @@ function App() {
         </Route>
       </Switch>}
       {isFooter && <Footer/>}
-    </div>
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 
