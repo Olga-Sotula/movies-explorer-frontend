@@ -6,8 +6,8 @@ import Button from '../Button/Button';
 //import AuthForm from '../AuthForm/AuthForm';
 import './Auth.css';
 
-const Auth = ({ type }) => {
-  const [formValues, setFormValues] = useState({name: '', emeil:'', password: ''});
+const Auth = ({ type, onSubmit, inProcessing }) => {
+  const [formValues, setFormValues] = useState({name: '', email:'', password: ''});
 
 
   const submitText = type === 'signup' ? 'Зарегистрироваться' : 'Войти';
@@ -26,6 +26,12 @@ const Auth = ({ type }) => {
   function handleSubmit(e) {
     // Запрещаем браузеру переходить по адресу формы
     e.preventDefault();
+
+    //Очищаем поля формы
+    setFormValues({name: '', email: '', password: ''});
+
+    // Передаём значения управляемых компонентов во внешний обработчик
+    onSubmit(formValues.name, formValues.email, formValues.password);
   }
 
 

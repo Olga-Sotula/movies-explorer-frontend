@@ -2,9 +2,9 @@ import React from 'react'
 
 import Auth from '../Auth/Auth';
 
-const Register = () => {
+const Register = ({ onSubmit, isProcessing }) => {
   return (
-    <Auth type = 'signup'/>
+    <Auth type = 'signup' onSubmit={onSubmit} isProcessing={isProcessing}/>
   )
 }
 

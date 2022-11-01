@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Route, Switch, useLocation } from 'react-router-dom'
+import { Route, Switch, useLocation, useHistory } from 'react-router-dom'
 
 import './App.css';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRouter/ProtectedRouter';
+import auth from '../../utils/auth';
 import Header from '../Header/Header.js';
 import Main from "../Main/Main.js";
 import Movies from '../Movies/Movies.js';
@@ -17,12 +18,33 @@ import NotFound from '../NotFound/NotFound';
 
 function App() {
   const { pathname } = useLocation();
+  const history = useHistory();
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const isHeader = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile' ? true : false;
   const isFooter = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' ? true : false;
+
+  function handleRegisterSubmit (name, email, password) {
+    if (name && password && email){
+      setIsProcessing(true);
+      auth.sign(password, email, name, "signup").then((res) => {
+        //setRegistered(true);
+        //setIsInfoTooltipPopupOpen(true);
+        history.push('/sign-in');
+      })
+      .catch((err) => {
+        console.log(err);
+        //setRegistered(false);
+        //setIsInfoTooltipPopupOpen(true);
+      })
+      .finally(() => {
+        setIsProcessing(false);
+      });
+    }
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -54,7 +76,10 @@ function App() {
           <Login/>
         </Route>
         <Route path="/signup">
-          <Register/>
+          <Register
+            onSubmit={handleRegisterSubmit}
+            isProcessing={isProcessing}
+          />
         </Route>
         <Route path="*">
           <NotFound />
