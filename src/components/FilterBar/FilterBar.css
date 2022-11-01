@@ -1,0 +1,18 @@
+.filter-bar {
+  max-width: 1280px;
+  padding: 60px 68px 144px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--ghost-color);
+}
+
+@media screen and (max-width: 800px) {
+  .filter-bar {
+    padding: 70px 30px 148px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .filter-bar {
+    padding: 76px 14px 60px;
+  }
+}

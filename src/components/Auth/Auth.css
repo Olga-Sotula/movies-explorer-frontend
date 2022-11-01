@@ -1,0 +1,133 @@
+.auth {
+  margin: 0 auto;
+  max-width: 1280px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth__form {
+  margin: 70px auto 0;
+  padding: 0 0 0 15px;
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.auth__title {
+  margin: 34px 0 0 0;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.auth__fieldset {
+  margin: 22px 0 0;
+  padding: 0;
+  border: none;
+}
+
+.auth__fieldset_type_login {
+  margin: 22px 0 90px 0;
+}
+
+.auth__label {
+  margin-top: 20px;
+  display: block;
+  font-size: 10px;
+  line-height: 1.2;
+  color: var(--dghost-color);
+}
+
+.auth__input {
+  width: 100%;
+  margin-top: 10px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 13px;
+  line-height: 16px;
+  background: #f9f9f9;
+  border: none;
+  border-radius: 8px;
+}
+
+.auth__input:focus {
+  outline: 1px solid var(--input-focus-color);
+}
+
+.auth__submit {
+  width: 100%;
+  margin-top: 90px;
+  padding: 12px 0 12px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: var(--secondary-color);
+  border-style: none;
+  border-radius: 3px;
+  background-color: #3456f3;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 1.5s ease-in;
+}
+
+.auth__submit:hover {
+  opacity: 0.6;
+}
+
+.auth__quest {
+  width: 100%;
+  margin: 12px 0 0 15px;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: var(--dghost-color);
+}
+
+@media screen and (max-width: 800px) {
+  .auth__form {
+    margin: 232px auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .auth__logo-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 18px;
+  }
+
+  .auth__form {
+    margin: 55px auto 0;
+    padding: 0;
+    max-width: 300px;
+    min-width: 300px;
+  }
+
+  .auth__title {
+    align-self: center;
+  }
+
+  .auth__fieldset {
+    margin: 62px 30px 0;
+  }
+
+  .auth__submit {
+    width: 85%;
+    margin-top: 262px;
+    padding: 16px 0;
+    align-self: center;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .auth__quest {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+

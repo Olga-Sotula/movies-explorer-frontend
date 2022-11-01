@@ -1,0 +1,21 @@
+.nav-menu {
+  margin: 0;
+  margin-left: 64px;
+  padding: 0;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-menu__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+
+}
+
+@media (max-width: 800px) {
+  .nav-menu {
+    display: none;
+  }
+}
