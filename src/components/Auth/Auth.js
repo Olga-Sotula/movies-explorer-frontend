@@ -9,7 +9,7 @@ import './Auth.css';
 
 const getValidators = (type) => {
   const res = [];
-  if (type === 'signin') {
+  if (type === 'signup') {
     res.push(({ name }) => isValidName(name) || { name: 'Имя должно содержать только латиницу, кириллицу, пробел или дефис.' });
     res.push(({ name }) => isValidLength(name, 2, 30) || { name: 'Имя должно быть от 2 до 30 символов' });
     res.push(({ name }) => (type === 'signin') || isNotEmpty(name) || { name: 'Обязательное поле' });
@@ -44,7 +44,6 @@ const Auth = ({ type, onSubmit, inProcessing }) => {
   function handleSubmit(e) {
     // Запрещаем браузеру переходить по адресу формы
     e.preventDefault();
-
     // Передаём значения управляемых компонентов во внешний обработчик
     onSubmit(values.name, values.email, values.password);
   }
