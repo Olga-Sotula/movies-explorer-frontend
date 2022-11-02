@@ -21,11 +21,22 @@ function App() {
   const history = useHistory();
 
   const [loggedIn, setLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState({
+    name: '',
+    email: '',
+  });
   const [authError, setAuthError] = useState('');
 
   const isHeader = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile' ? true : false;
   const isFooter = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' ? true : false;
+
+  const token = localStorage.getItem('jwt');
+
+  useEffect(() => {
+    if (token) {
+      setToken(token);
+    }
+  }, []);
 
   useEffect(() => {
     setAuthError('');
@@ -57,7 +68,7 @@ function App() {
         email: res.data.email
       });
       setLoggedIn(true);
-      history.push('/');
+      history.push(pathname);
     })
     .catch((err) => {
       console.log(err);
