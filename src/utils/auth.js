@@ -14,12 +14,13 @@ class Auth {
 
 
   sign = (password, email, name, endpoint) => {
+    const data = endpoint=== 'signup' ? {password, email, name} : {email, password};
     return fetch(`${this._url}/${endpoint}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({password, email, name})
+      body: JSON.stringify(data)
     })
     .then((res) => {
       return this._handleResponse(res);

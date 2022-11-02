@@ -31,13 +31,13 @@ function App() {
     if (name && password && email){
       setIsProcessing(true);
       auth.sign(password, email, name, "signup").then((res) => {
-        //setRegistered(true);
+        setLoggedIn(true);
         //setIsInfoTooltipPopupOpen(true);
-        history.push('/sign-in');
+        history.push('/');
       })
       .catch((err) => {
         console.log(err);
-        //setRegistered(false);
+        setLoggedIn(false);
         //setIsInfoTooltipPopupOpen(true);
       })
       .finally(() => {
@@ -46,17 +46,53 @@ function App() {
     }
   }
 
+  function setToken(token){
+    setIsProcessing(true);
+    auth.checkToken(token).then((res) => {
+      localStorage.setItem('jwt', token);
+      setCurrentUser({
+        id: res.data._id,
+        name: res.data.name,
+        email: res.data.email
+      });
+      setLoggedIn(true);
+      history.push('/');
+    })
+    .catch((err) => {
+      console.log(err);
+      setLoggedIn(false);
+    })
+    .finally(() => {
+      setIsProcessing(false);
+    });
+  }
+
+
+  function handleLoginSubmit (email, password) {
+    if (password && email){
+      setIsProcessing(true);
+      auth.sign(password, email, "", "signin").then((res) => {
+        setToken(res.token);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoggedIn(false);
+      })
+      .finally(() => {
+        setIsProcessing(false);
+      });
+    }
+  }
+
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
       { isHeader && <Header />}
       {<Switch>
-        <ProtectedRoute
-          exact
-          path="/"
-          component={Main}
-          loggedIn={loggedIn}
-        />
+        <Route exact path="/">
+          <Main/>
+        </Route>
         <ProtectedRoute
           path="/movies"
           component={Movies}
@@ -73,7 +109,9 @@ function App() {
           loggedIn={loggedIn}
         />
         <Route path="/signin">
-          <Login/>
+          <Login
+            onSubmit={handleLoginSubmit}
+          />
         </Route>
         <Route path="/signup">
           <Register

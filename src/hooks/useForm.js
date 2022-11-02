@@ -9,12 +9,12 @@ const validate = (validators, values) => {
 }
 
 //хук управления формой и валидации формы
-export function useFormWithValidation(defaultValues, defaultTouched, validators = []) {
+export function useFormWithValidation(defaultValues, defaultChanged, validators = []) {
   const [values, setValues] = useState(defaultValues);
   const { isValid: defaultIsValid, errors: defaultErrors } = validate(validators, defaultValues);
   const [errors, setErrors] = useState(defaultErrors);
   const [isValid, setIsValid] = useState(defaultIsValid);
-  const [touched, setTouched] = useState(defaultTouched);
+  const [changed, setChanged] = useState(defaultChanged);
 
   const handleChange = (event) => {
     const target = event.target;
@@ -25,7 +25,7 @@ export function useFormWithValidation(defaultValues, defaultTouched, validators 
     setValues(newValues);
     setErrors(newErrors);
     setIsValid(newIsValid);
-    setTouched({ ...touched, [name]: true });
+    setChanged({ ...changed, [name]: true });
   };
 
   const resetForm = useCallback(
@@ -33,12 +33,12 @@ export function useFormWithValidation(defaultValues, defaultTouched, validators 
       setValues(defaultValues);
       setErrors({});
       setIsValid(false);
-      setTouched({});
+      setChanged({});
     },
-    [setValues, setErrors, setIsValid, setTouched]
+    [setValues, setErrors, setIsValid, setChanged]
   );
 
-  return { values, handleChange, touched, errors, isValid, resetForm };
+  return { values, handleChange, changed, errors, isValid, resetForm };
 }
 
 export default useFormWithValidation;

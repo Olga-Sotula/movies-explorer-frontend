@@ -21,13 +21,13 @@ const getValidators = (type) => {
 };
 
 const defaultValues = { name: '', email: '', password: '' };
-const defaultTouched = { name: false, email: false,  password: false };
+const defaultChanged = { name: false, email: false,  password: false };
 
 const Auth = ({ type, onSubmit, inProcessing }) => {
   const { pathname } = useLocation();
   const validators = getValidators(type);
-  const { values, handleChange, touched, errors, isValid, resetForm } = useFormWithValidation(
-    defaultValues, defaultTouched, validators);
+  const { values, handleChange, changed, errors, isValid, resetForm } = useFormWithValidation(
+    defaultValues, defaultChanged, validators);
 
   useEffect(() => {
     resetForm();
@@ -45,7 +45,11 @@ const Auth = ({ type, onSubmit, inProcessing }) => {
     // Запрещаем браузеру переходить по адресу формы
     e.preventDefault();
     // Передаём значения управляемых компонентов во внешний обработчик
-    onSubmit(values.name, values.email, values.password);
+    if (type === 'signup'){
+      onSubmit(values.name, values.email, values.password);
+    } else {
+      onSubmit(values.email, values.password);
+    }
   }
 
 
@@ -73,7 +77,7 @@ const Auth = ({ type, onSubmit, inProcessing }) => {
                 onChange={handleChange}
                 value={values.name}
               />
-              {touched.name && errors.name && <p className='auth__error'>{errors.name}</p>}
+              {changed.name && errors.name && <p className='auth__error'>{errors.name}</p>}
             </label>
           </>
         }
@@ -90,7 +94,7 @@ const Auth = ({ type, onSubmit, inProcessing }) => {
             onChange={handleChange}
             value={values.email}
           />
-          {touched.email && errors.email && <p className='auth__error'>{errors.email}</p>}
+          {changed.email && errors.email && <p className='auth__error'>{errors.email}</p>}
         </label>
         <label
           htmlFor='password'
@@ -105,7 +109,7 @@ const Auth = ({ type, onSubmit, inProcessing }) => {
             onChange={handleChange}
             value={values.password}
           />
-          {touched.password && errors.password && <p className='auth__error'>{errors.password}</p>}
+          {changed.password && errors.password && <p className='auth__error'>{errors.password}</p>}
         </label>
       </fieldset>
         <button
