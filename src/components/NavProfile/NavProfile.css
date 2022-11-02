@@ -14,6 +14,11 @@
   transition: opacity 1.5s ease-in;
 }
 
+.nav-profile_type_main {
+  border: 2px solid #fff;
+}
+
+
 .nav-profile:hover {
   opacity: 0.6;
 }

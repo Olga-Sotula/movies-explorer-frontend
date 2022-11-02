@@ -9,7 +9,7 @@ import NavProfile from '../NavProfile/NavProfile.js';
 import Burger from '../Burger/Burger';
 import PopupMenu from '../PopupMenu/PopupMenu';
 
-const Navigation = () => {
+const Navigation = ({ loggedIn }) => {
   const { pathname } = useLocation();
   const [popupIsOpen, setPopupIsOpen] = useState(false);
 
@@ -30,7 +30,7 @@ const Navigation = () => {
   return (
     <>
       <HeaderLogo/>
-      {pathname === '/' ? <NavAuth/> :
+      {(pathname === '/' && !loggedIn) ? <NavAuth/> :
         <>
           <NavMenu/>
           <NavProfile modificator="nav-profile_type_header"/>
