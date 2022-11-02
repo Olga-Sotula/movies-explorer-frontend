@@ -1,21 +1,38 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { Link } from 'react-router-dom';
 
+import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
+import { isValidName, isEmail, isNotEmpty, isValidLength } from '../../utils/validation';
+import useFormWithValidation from '../../hooks/useForm';
 import Button from '../Button/Button';
 import './Profile.css'
 
-const Profile = ( ) => {
-  const currentUser = {name: 'Виталий'}
-  const [formValues, setFormValues] = useState({name: 'Виталий', emeil:'pochta@yandex.ru'});
+const getValidators = () => {
+  return (
+    [
+      ({ name }) => isValidName(name) || { name: 'Имя должно содержать только латиницу, кириллицу, пробел или дефис.' },
+      ({ name }) => isValidLength(name, 2, 30) || { name: 'Имя должно быть от 2 до 30 символов' },
+      ({ name }) => isNotEmpty(name) || { name: 'Обязательное поле' },
+      ({ email }) => isEmail(email) || { email: 'email должен соответствовать шаблону электронной почты' },
+      ({ email }) => isNotEmpty(email) || { email: 'Обязатеьное поле' },
+    ]
+  )
+};
 
-  function handleChange(evt) {
-    const {name, value} = evt.target;
-    setFormValues(prevState => ({ ...prevState, [name]: value }));
-  }
+const Profile = ({ onSubmit, serverError, serverSuccess }) => {
+  const currentUser = useContext(CurrentUserContext);
+  const validators = getValidators();
+  const defaultValues = { name: currentUser.name, email: currentUser.email };
+  const defaultChanged = { name: false, email: false};
+
+  const { values, handleChange, changed, errors, isValid, resetForm } = useFormWithValidation(
+    defaultValues, defaultChanged, validators);
 
   function handleSubmit(e) {
     // Запрещаем браузеру переходить по адресу формы
     e.preventDefault();
+
+    onSubmit({ name: values.name, email: values.email });
   }
 
 
@@ -38,8 +55,9 @@ const Profile = ( ) => {
                 required
                 className='profile__input'
                 onChange={handleChange}
-                value={formValues.name}
+                value={values.name}
               />
+              {changed.name && errors.name && <p className='profile__error'>{errors.name}</p>}
             </label>
             <div className='profile__divider'></div>
             <label
@@ -52,8 +70,9 @@ const Profile = ( ) => {
                 required
                 className='profile__input'
                 onChange={handleChange}
-                value={formValues.email}
+                value={values.email}
               />
+              {changed.email && errors.email && <p className='profile__error'>{errors.email}</p>}
             </label>
           </fieldset>
           <button
@@ -62,6 +81,8 @@ const Profile = ( ) => {
             onSubmit={handleSubmit}
           >
             Редактировать
+            {serverError && <p className='profile__server profile__server_error'>{serverError}</p>}
+            {serverSuccess && <p className='profile__server profile__server_success'>Профиль обновлен</p>}
           </button>
           <Link to='/'>
             <Button type='button' modificator="button_type_alarm">

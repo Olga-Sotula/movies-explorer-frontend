@@ -6,6 +6,7 @@ import './App.css';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRouter/ProtectedRouter';
 import auth from '../../utils/auth';
+import api from '../../utils/api';
 import Header from '../Header/Header.js';
 import Main from "../Main/Main.js";
 import Movies from '../Movies/Movies.js';
@@ -25,7 +26,8 @@ function App() {
     name: '',
     email: '',
   });
-  const [authError, setAuthError] = useState('');
+  const [serverError, setServerError] = useState('');
+  const [serverSuccess, setServerSuccess] = useState('');
 
   const isHeader = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile' ? true : false;
   const isFooter = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' ? true : false;
@@ -39,20 +41,21 @@ function App() {
   }, []);
 
   useEffect(() => {
-    setAuthError('');
+    setServerError('');
+    setServerSuccess('');
   }, [pathname]);
 
   function handleRegisterSubmit (name, email, password) {
     if (name && password && email){
       auth.sign(password, email, name, "signup").then((res) => {
         setLoggedIn(true);
-        setAuthError('');
+        setServerError('');
         history.push('/');
       })
       .catch((err) => {
         console.log(err);
         setLoggedIn(false);
-        setAuthError(err);
+        setServerError(err);
 
       });
 
@@ -81,15 +84,27 @@ function App() {
     if (password && email){
       auth.sign(password, email, "", "signin").then((res) => {
         setToken(res.token);
-        setAuthError('');
+        setServerError('');
       })
       .catch((err) => {
         setLoggedIn(false);
-        setAuthError(err);
+        setServerError(err);
       });
     }
   }
 
+  function handleUpdateUser(data) {
+    api.updateUserProfile(data, token)
+    .then((newUser) => {
+      setCurrentUser(newUser.data);
+      setServerError('');
+      setServerSuccess(true)
+    })
+    .catch((err) => {
+      setServerError(err);
+      setServerSuccess(false);
+    });
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -113,17 +128,20 @@ function App() {
           path="/profile"
           component={Profile}
           loggedIn={loggedIn}
+          onSubmit={handleUpdateUser}
+          serverError={serverError}
+          serverSuccess={serverSuccess}
         />
         <Route path="/signin">
           <Login
             onSubmit={handleLoginSubmit}
-            serverError={authError}
+            serverError={serverError}
           />
         </Route>
         <Route path="/signup">
           <Register
             onSubmit={handleRegisterSubmit}
-            serverError={authError}
+            serverError={serverError}
           />
         </Route>
         <Route path="*">
