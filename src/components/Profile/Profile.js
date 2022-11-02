@@ -2,12 +2,12 @@ import React, {useState, useContext} from 'react'
 import { Link } from 'react-router-dom';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
-import { isValidName, isEmail, isNotEmpty, isValidLength } from '../../utils/validation';
+import { isValidName, isEmail, isNotEmpty, isValidLength, isDataChanged } from '../../utils/validation';
 import useFormWithValidation from '../../hooks/useForm';
 import Button from '../Button/Button';
 import './Profile.css'
 
-const getValidators = () => {
+const getValidators = (currentValues) => {
   return (
     [
       ({ name }) => isValidName(name) || { name: 'Имя должно содержать только латиницу, кириллицу, пробел или дефис.' },
@@ -15,17 +15,18 @@ const getValidators = () => {
       ({ name }) => isNotEmpty(name) || { name: 'Обязательное поле' },
       ({ email }) => isEmail(email) || { email: 'email должен соответствовать шаблону электронной почты' },
       ({ email }) => isNotEmpty(email) || { email: 'Обязатеьное поле' },
+      (values) => isDataChanged(values, currentValues) || { values: {} },
     ]
   )
 };
 
 const Profile = ({ onSubmit, serverError, serverSuccess }) => {
   const currentUser = useContext(CurrentUserContext);
-  const validators = getValidators();
+  const validators = getValidators(currentUser);
   const defaultValues = { name: currentUser.name, email: currentUser.email };
   const defaultChanged = { name: false, email: false};
 
-  const { values, handleChange, changed, errors, isValid, resetForm } = useFormWithValidation(
+  const { values, handleChange, changed, errors, isValid, setValid } = useFormWithValidation(
     defaultValues, defaultChanged, validators);
 
   function handleSubmit(e) {
@@ -33,6 +34,7 @@ const Profile = ({ onSubmit, serverError, serverSuccess }) => {
     e.preventDefault();
 
     onSubmit({ name: values.name, email: values.email });
+    setValid(false);
   }
 
 
@@ -79,9 +81,10 @@ const Profile = ({ onSubmit, serverError, serverSuccess }) => {
             className={`profile__submit`}
             type='submit'
             onSubmit={handleSubmit}
+            disabled={!isValid}
           >
             Редактировать
-            {serverError && <p className='profile__server profile__server_error'>{serverError}</p>}
+            {serverError && <p className='profile__server proile__server_error'>{serverError}</p>}
             {serverSuccess && <p className='profile__server profile__server_success'>Профиль обновлен</p>}
           </button>
           <Link to='/'>

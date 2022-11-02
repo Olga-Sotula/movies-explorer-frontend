@@ -16,9 +16,9 @@ export const isValidLength = (value, min, max) => {
   return value != null && value.trim().length >= min && value.trim().length <= max;
 }
 
-/*export const isNew = (newValue, oldValue) => newValue !== oldValue;
+/*export const isNew = (newValue, oldValue) => newValue !== oldValue;*/
 
-export const isAnythingChanged = (newValues, oldValues) => {
-  const diff = Object.keys(newValues).map(key => newValues[key] !== oldValues[key])
+export const isDataChanged = (newValues, currentValues) => {
+  const diff = Object.keys(newValues).map(key => newValues[key] !== currentValues[key])
   return diff.includes(true);
-};*/
+};
