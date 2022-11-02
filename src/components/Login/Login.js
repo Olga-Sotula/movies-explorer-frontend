@@ -2,9 +2,9 @@ import React from 'react'
 
 import Auth from '../Auth/Auth';
 
-const Login = ({ onSubmit, isProcessing }) => {
+const Login = ({ onSubmit, serverError }) => {
   return (
-    <Auth type = 'signin' onSubmit={onSubmit} isProcessing={isProcessing}/>
+    <Auth type = 'signin' onSubmit={onSubmit} serverError={serverError}/>
   )
 }
 

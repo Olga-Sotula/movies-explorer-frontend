@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Switch, useLocation, useHistory } from 'react-router-dom'
 
 import './App.css';
@@ -22,32 +22,33 @@ function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
-  const [isProcessing, setIsProcessing] = useState(false);
+  const [authError, setAuthError] = useState('');
 
   const isHeader = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile' ? true : false;
   const isFooter = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' ? true : false;
 
+  useEffect(() => {
+    setAuthError('');
+  }, [pathname]);
+
   function handleRegisterSubmit (name, email, password) {
     if (name && password && email){
-      setIsProcessing(true);
       auth.sign(password, email, name, "signup").then((res) => {
         setLoggedIn(true);
-        //setIsInfoTooltipPopupOpen(true);
+        setAuthError('');
         history.push('/');
       })
       .catch((err) => {
         console.log(err);
         setLoggedIn(false);
-        //setIsInfoTooltipPopupOpen(true);
-      })
-      .finally(() => {
-        setIsProcessing(false);
+        setAuthError(err);
+
       });
+
     }
   }
 
   function setToken(token){
-    setIsProcessing(true);
     auth.checkToken(token).then((res) => {
       localStorage.setItem('jwt', token);
       setCurrentUser({
@@ -61,25 +62,19 @@ function App() {
     .catch((err) => {
       console.log(err);
       setLoggedIn(false);
-    })
-    .finally(() => {
-      setIsProcessing(false);
     });
   }
 
 
   function handleLoginSubmit (email, password) {
     if (password && email){
-      setIsProcessing(true);
       auth.sign(password, email, "", "signin").then((res) => {
         setToken(res.token);
+        setAuthError('');
       })
       .catch((err) => {
-        console.log(err);
         setLoggedIn(false);
-      })
-      .finally(() => {
-        setIsProcessing(false);
+        setAuthError(err);
       });
     }
   }
@@ -111,12 +106,13 @@ function App() {
         <Route path="/signin">
           <Login
             onSubmit={handleLoginSubmit}
+            serverError={authError}
           />
         </Route>
         <Route path="/signup">
           <Register
             onSubmit={handleRegisterSubmit}
-            isProcessing={isProcessing}
+            serverError={authError}
           />
         </Route>
         <Route path="*">

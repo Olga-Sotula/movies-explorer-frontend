@@ -23,7 +23,7 @@ const getValidators = (type) => {
 const defaultValues = { name: '', email: '', password: '' };
 const defaultChanged = { name: false, email: false,  password: false };
 
-const Auth = ({ type, onSubmit, inProcessing }) => {
+const Auth = ({ type, onSubmit, serverError }) => {
   const { pathname } = useLocation();
   const validators = getValidators(type);
   const { values, handleChange, changed, errors, isValid, resetForm } = useFormWithValidation(
@@ -118,6 +118,7 @@ const Auth = ({ type, onSubmit, inProcessing }) => {
           disabled={!isValid}
           onSubmit={handleSubmit}>
           {submitText}
+          {serverError && <p className='auth__error auth__error_server'>{serverError}</p>}
         </button>
         <p className='auth__quest'>
           {questText}
