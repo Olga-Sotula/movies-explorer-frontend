@@ -106,6 +106,16 @@ function App() {
     });
   }
 
+  function handleLogout() {
+    setLoggedIn(false);
+    setCurrentUser({
+      name: '',
+      email: '',
+    });
+    localStorage.removeItem('jwt');
+    history.push('/');
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -129,6 +139,7 @@ function App() {
           component={Profile}
           loggedIn={loggedIn}
           onSubmit={handleUpdateUser}
+          onLogout={handleLogout}
           serverError={serverError}
           serverSuccess={serverSuccess}
         />

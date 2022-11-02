@@ -20,7 +20,7 @@ const getValidators = (currentValues) => {
   )
 };
 
-const Profile = ({ onSubmit, serverError, serverSuccess }) => {
+const Profile = ({ onSubmit, onLogout, serverError, serverSuccess }) => {
   const currentUser = useContext(CurrentUserContext);
   const validators = getValidators(currentUser);
   const defaultValues = { name: currentUser.name, email: currentUser.email };
@@ -88,7 +88,7 @@ const Profile = ({ onSubmit, serverError, serverSuccess }) => {
             {serverSuccess && <p className='profile__server profile__server_success'>Профиль обновлен</p>}
           </button>
           <Link to='/'>
-            <Button type='button' modificator="button_type_alarm">
+            <Button type='button' modificator="button_type_alarm" onClick={() => onLogout()}>
               Выйти из аккаунта
             </Button>
           </Link>
