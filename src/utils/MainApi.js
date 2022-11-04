@@ -1,4 +1,4 @@
-import BASE_URL from "./constants";
+import { BASE_URL } from "./constants";
 
 class Api {
   constructor(baseUrl) {
@@ -38,8 +38,8 @@ class Api {
       })
   }
 
-  /*getCards(token) {
-    return fetch(`${this._url}/cards`, {
+  getMovies(token) {
+    return fetch(`${this._url}/movies`, {
         headers: {
           'authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ class Api {
       })
   }
 
-  addCard(card, token) {
+  /*addCard(card, token) {
     return fetch(`${this._url}/cards`, {
         method: 'POST',
         headers: {

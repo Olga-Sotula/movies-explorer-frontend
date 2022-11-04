@@ -6,7 +6,8 @@ import './App.css';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRouter/ProtectedRouter';
 import auth from '../../utils/auth';
-import api from '../../utils/api';
+import api from '../../utils/MainApi';
+import moviesApi from '../../utils/MoviesApi';
 import Header from '../Header/Header.js';
 import Main from "../Main/Main.js";
 import Movies from '../Movies/Movies.js';
@@ -28,6 +29,10 @@ function App() {
   });
   const [serverError, setServerError] = useState('');
   const [serverSuccess, setServerSuccess] = useState('');
+  const [moviesFilter, setMoviesFilter] = useState({ query: '', shorts: false });
+  const [savedMoviesFilter, setSavedMoviesFilter] = useState({ query: '', shorts: false });
+  const [moviesList, setMoviesList] = useState([]);
+  const [savedMoviesList, setSavedMoviesList] = useState([]);
 
   const isHeader = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile' ? true : false;
   const isFooter = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' ? true : false;
@@ -35,15 +40,29 @@ function App() {
   const token = localStorage.getItem('jwt');
 
   useEffect(() => {
-    if (token) {
-      setToken(token);
-    }
+    setToken(token);
   }, []);
 
   useEffect(() => {
     setServerError('');
     setServerSuccess('');
   }, [pathname]);
+
+  useEffect(() => {
+    const d = token;
+    if (loggedIn) {
+      Promise.all([api.getUserInfo(token),api.getMovies(token), moviesApi.getMovies()])
+        .then((res) => {
+          const [initialUser,savedMovies, MoviesList] = res;
+          setCurrentUser(initialUser.data);
+          setSavedMoviesList(savedMovies.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        });
+    }
+  }, [loggedIn]);
+
 
   function handleRegisterSubmit (name, email, password) {
     if (name && password && email){
@@ -83,6 +102,7 @@ function App() {
   function handleLoginSubmit (email, password) {
     if (password && email){
       auth.sign(password, email, "", "signin").then((res) => {
+        setLoggedIn(true);
         setToken(res.token);
         setServerError('');
       })
@@ -116,6 +136,16 @@ function App() {
     history.push('/');
   }
 
+  //movies
+  function updateMoviesFilter(filter) {
+    setMoviesFilter(filter);
+    localStorage.setItem('moviesFilter', JSON.stringify(filter));
+  }
+
+  function updateSavedMoviesFilter(filter) {
+    setSavedMoviesFilter(filter);
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -128,11 +158,13 @@ function App() {
           path="/movies"
           component={Movies}
           loggedIn={loggedIn}
+          onSearch={updateMoviesFilter}
         />
         <ProtectedRoute
           path="/saved-movies"
           component={SavedMovies}
           loggedIn={loggedIn}
+          onSearch={updateSavedMoviesFilter}
         />
         <ProtectedRoute
           path="/profile"
