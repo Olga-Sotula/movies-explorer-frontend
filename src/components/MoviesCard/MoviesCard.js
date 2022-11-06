@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './MoviesCard.css';
 
-export default function MoviesCard({ card, isSaved }) {
+export default function MoviesCard({ card, isSaved, onCardLike }) {
+  const [liked, setLiked] = useState(card._id !== null);
+
+  function handleLikeCard() {
+    setLiked(!liked);
+    onCardLike(card);
+  }
+
 
   return (
     <div className='card'>
@@ -11,8 +18,14 @@ export default function MoviesCard({ card, isSaved }) {
           {card.nameRU}
         </h2>
         {isSaved ?
-          <button type='button' className='card__button card__button_delete'/> :
-          <button type='button' className={`card__button card__button_like ${card.liked ? 'card__button_liked' : ''}`}/>
+          <button
+            type='button'
+            className='card__button card__button_delete'
+            onClick={handleLikeCard}/> :
+          <button
+            type='button'
+            className={`card__button card__button_like ${liked ? 'card__button_liked' : ''}`}
+            onClick={handleLikeCard}/>
         }
       </div>
       <span className='card__duration'>{card.duration}</span>

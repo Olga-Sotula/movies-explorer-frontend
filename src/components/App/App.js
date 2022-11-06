@@ -27,6 +27,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({
     name: '',
     email: '',
+    _id: '',
   });
   const [serverError, setServerError] = useState('');
   const [serverSuccess, setServerSuccess] = useState('');
@@ -76,6 +77,7 @@ function App() {
               _id: savedMovie ? savedMovie._id : null,
             }
           }))
+
           const filter = localStorage.getItem('moviesFilter');
           if (filter) {
             setMoviesFilter(filter);
@@ -160,6 +162,7 @@ function App() {
     setCurrentUser({
       name: '',
       email: '',
+      _id:''
     });
     localStorage.removeItem('jwt');
     history.push('/');
@@ -188,13 +191,26 @@ function App() {
     return []
   }
 
-  function handleCardLike(clickedMovie) {
-    if (clickedMovie._id === null) {
-      api
-        .postMovie(clickedMovie)
-        .then((newMovie) => {
+  function filterSavedMovies() {
+    const savedMovies = moviesList.filter(movie => movie._id !== null);
+    if (savedMoviesFilter.query) {
+      return savedMovies.filter(movie => {
+        return movie.nameRU.toLowerCase().includes(savedMoviesFilter.query) &&
+          (
+            (savedMoviesFilter.shorts && movie.duration <= SHORT_MOVIE_DURATION) ||
+            (!savedMovies.shorts && movie.duration > SHORT_MOVIE_DURATION)
+          );
+      })
+    }
+    return savedMovies;
+  }
+
+  function handleCardLike(card) {
+    if (card._id === null) {
+      api.addCard(card, currentUser._id, token)
+        .then((newCard) => {
           setMoviesList(state => {
-            const newState = state.map((movie) => (movie.movieId === newMovie.data.movieId) ? newMovie.data : movie);
+            const newState = state.map((movie) => (movie.movieId === newCard.data.movieId) ? newCard.data : movie);
             return newState;
           });
         })
@@ -202,12 +218,11 @@ function App() {
           console.log(err);
         });
     } else {
-      api
-        .deleteMovie(clickedMovie._id)
+      api.deleteCard(card._id, token)
         .then(() => {
           setMoviesList(state => {
             const newState = state.map((movie) => {
-              return (movie.movieId === clickedMovie.movieId) ?
+              return (movie.movieId === card.movieId) ?
                 { ...movie, _id: null } :
                 movie;
             })
@@ -244,7 +259,12 @@ function App() {
           path="/saved-movies"
           component={SavedMovies}
           loggedIn={loggedIn}
+          status={status}
+          movies={savedMoviesList}
           onSearch={updateSavedMoviesFilter}
+          filter={savedMoviesFilter}
+          onFilter={filterSavedMovies}
+          onCardLike={handleCardLike}
         />
         <ProtectedRoute
           path="/profile"

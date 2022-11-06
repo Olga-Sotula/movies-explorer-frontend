@@ -50,32 +50,17 @@ class Api {
       })
   }
 
-  /*addCard(card, token) {
-    return fetch(`${this._url}/cards`, {
+  addCard(card, ownerId, token) {
+    const body = JSON.parse(JSON.stringify(card));
+    delete body._id;
+
+    return fetch(`${this._url}/movies`, {
         method: 'POST',
         headers: {
           'authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(card)
-      })
-      .then((res) => {
-        return this._handleResponse(res);
-      })
-  }
-
-  changeLikeCardStatus(id, isLiked, token) {
-    const method = isLiked ? 'PUT' : 'DELETE';
-    return this.updateLike(id, method, token);
-  }
-
-  updateLike(id, method, token) {
-    return fetch(`${this._url}/cards/${id}/likes`, {
-        method: method,
-        headers: {
-          'authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
+        body: JSON.stringify(body)
       })
       .then((res) => {
         return this._handleResponse(res);
@@ -83,7 +68,7 @@ class Api {
   }
 
   deleteCard(id, token) {
-    return fetch(`${this._url}/cards/${id}`, {
+    return fetch(`${this._url}/movies/${id}`, {
         method: 'DELETE',
         headers: {
           'authorization': `Bearer ${token}`,
@@ -93,7 +78,7 @@ class Api {
       .then((res) => {
         return this._handleResponse(res);
       })
-  }*/
+  }
 }
 
 const api = new Api(BASE_URL);
