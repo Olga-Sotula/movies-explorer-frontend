@@ -12,8 +12,8 @@ class MoviesApi {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
-  getMovies(token) {
-    return fetch(`${this._url}`)
+  getMovies() {
+    return fetch(`${this._url}beatfilm-movies`)
       .then((res) => {
         return this._handleResponse(res);
       })

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch, useLocation, useHistory } from 'react-router-dom'
 
+import { MOVIES_API_URL } from "../../utils/constants";
 import './App.css';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -49,13 +50,38 @@ function App() {
   }, [pathname]);
 
   useEffect(() => {
-    const d = token;
+    //#todo loader
     if (loggedIn) {
       Promise.all([api.getUserInfo(token),api.getMovies(token), moviesApi.getMovies()])
         .then((res) => {
-          const [initialUser,savedMovies, MoviesList] = res;
+          const [initialUser,savedMovies, movies] = res;
           setCurrentUser(initialUser.data);
           setSavedMoviesList(savedMovies.data)
+          setMoviesList(movies.map(movie => {
+            const savedMovie = savedMovies.data.find(elem => elem.movieId === movie.id);
+            return {
+              country: movie.country,
+              director: movie.director,
+              duration: movie.duration,
+              year: movie.year,
+              description: movie.description,
+              image: `${MOVIES_API_URL}${movie.image.url}`,
+              trailerLink: movie.trailerLink,
+              nameRU: movie.nameRU,
+              nameEN: movie.nameEN,
+              thumbnail: `${MOVIES_API_URL}${movie.image.formats.thumbnail.url}`,
+              movieId: movie.id,
+              _id: savedMovie ? savedMovie._id : null,
+            }
+          }))
+          const filter = localStorage.getItem('moviesFilter');
+          if (filter) {
+            setMoviesFilter(filter);
+          }
+          const savedFilter = localStorage.getItem('savedMoviesFilter');
+          if (savedFilter) {
+            setSavedMoviesFilter(savedFilter);
+          }
         })
         .catch((err) => {
           console.log(err)
