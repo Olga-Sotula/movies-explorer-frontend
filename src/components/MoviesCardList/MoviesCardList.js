@@ -1,7 +1,6 @@
 import React from 'react';
 
 import MoviesCard from '../MoviesCard/MoviesCard.js';
-import Button from '../Button/Button.js';
 import './MoviesCardList.css';
 
 const MoviesCardList = ({ cards, isSaved }) => {
@@ -14,7 +13,6 @@ const MoviesCardList = ({ cards, isSaved }) => {
           </li>
         ))}
       </ul>
-      <Button type='button' modificator="button_type_else">Ещё</Button>
     </section>
   )
 }

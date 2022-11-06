@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch, useLocation, useHistory } from 'react-router-dom'
 
-import { MOVIES_API_URL } from "../../utils/constants";
+import { MOVIES_API_URL, SHORT_MOVIE_DURATION } from "../../utils/constants";
 import './App.css';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -34,6 +34,7 @@ function App() {
   const [savedMoviesFilter, setSavedMoviesFilter] = useState({ query: '', shorts: false });
   const [moviesList, setMoviesList] = useState([]);
   const [savedMoviesList, setSavedMoviesList] = useState([]);
+  const [status, setStatus] = useState('success'); //success, error, process
 
   const isHeader = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile' ? true : false;
   const isFooter = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' ? true : false;
@@ -52,6 +53,7 @@ function App() {
   useEffect(() => {
     //#todo loader
     if (loggedIn) {
+      setStatus('process');
       Promise.all([api.getUserInfo(token),api.getMovies(token), moviesApi.getMovies()])
         .then((res) => {
           const [initialUser,savedMovies, movies] = res;
@@ -82,9 +84,10 @@ function App() {
           if (savedFilter) {
             setSavedMoviesFilter(savedFilter);
           }
+          setStatus('success');
         })
         .catch((err) => {
-          console.log(err)
+          setStatus('error');
         });
     }
   }, [loggedIn]);
@@ -172,6 +175,52 @@ function App() {
     setSavedMoviesFilter(filter);
   }
 
+  function filterMovies() {
+    if (moviesFilter.query) {
+      return moviesList.filter(movie => {
+        return movie.nameRU.toLowerCase().includes(moviesFilter.query) &&
+          (
+            (moviesFilter.shorts && movie.duration <= SHORT_MOVIE_DURATION) ||
+            (!moviesFilter.shorts && movie.duration > SHORT_MOVIE_DURATION)
+          );
+      })
+    }
+    return []
+  }
+
+  function handleCardLike(clickedMovie) {
+    if (clickedMovie._id === null) {
+      api
+        .postMovie(clickedMovie)
+        .then((newMovie) => {
+          setMoviesList(state => {
+            const newState = state.map((movie) => (movie.movieId === newMovie.data.movieId) ? newMovie.data : movie);
+            return newState;
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      api
+        .deleteMovie(clickedMovie._id)
+        .then(() => {
+          setMoviesList(state => {
+            const newState = state.map((movie) => {
+              return (movie.movieId === clickedMovie.movieId) ?
+                { ...movie, _id: null } :
+                movie;
+            })
+            return newState;
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }
+
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -184,7 +233,12 @@ function App() {
           path="/movies"
           component={Movies}
           loggedIn={loggedIn}
+          status={status}
+          movies={moviesList}
           onSearch={updateMoviesFilter}
+          filter={moviesFilter}
+          onFilter={filterMovies}
+          onCardLike={handleCardLike}
         />
         <ProtectedRoute
           path="/saved-movies"

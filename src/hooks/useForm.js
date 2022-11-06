@@ -9,7 +9,7 @@ const validate = (validators, values) => {
 }
 
 //хук управления формой и валидации формы
-export function useFormWithValidation(defaultValues, defaultChanged, validators = []) {
+function useFormWithValidation(defaultValues, defaultChanged, validators = []) {
   const [values, setValues] = useState(defaultValues);
   const { isValid: defaultIsValid, errors: defaultErrors } = validate(validators, defaultValues);
   const [errors, setErrors] = useState(defaultErrors);
@@ -29,7 +29,7 @@ export function useFormWithValidation(defaultValues, defaultChanged, validators 
   };
 
   const resetForm = useCallback(
-    (newValues = {}, newErrors = {}, newIsValid = false) => {
+    () => {
       setValues(defaultValues);
       setErrors({});
       setIsValid(false);
