@@ -13,12 +13,7 @@ class MoviesApi {
   }
 
   getMovies(token) {
-    return fetch(`${this._url}/movies`, {
-        headers: {
-          'authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      })
+    return fetch(`${this._url}`)
       .then((res) => {
         return this._handleResponse(res);
       })
