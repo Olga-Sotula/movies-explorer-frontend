@@ -78,8 +78,6 @@ function App() {
             }
           })
           setMoviesList(movies);
-          localStorage.setItem('movies', JSON.stringify(allMovies));
-          localStorage.setItem('savedMovies', JSON.stringify(allSavedMovies.data));
           const { moviesQuery, moviesShorts } = JSON.parse(localStorage.getItem('moviesFilter'));
           setMoviesFilter({ query: moviesQuery || '', shorts: moviesShorts || false});
           const { savedMoviesQuery, savedMoviesShorts } = JSON.parse(localStorage.getItem('savedMoviesFilter'));
