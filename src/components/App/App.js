@@ -57,11 +57,11 @@ function App() {
       setStatus('process');
       Promise.all([api.getUserInfo(token),api.getMovies(token), moviesApi.getMovies()])
         .then((res) => {
-          const [initialUser,savedMovies, movies] = res;
+          const [initialUser,allSavedMovies, allMovies] = res;
           setCurrentUser(initialUser.data);
-          setSavedMoviesList(savedMovies.data)
-          setMoviesList(movies.map(movie => {
-            const savedMovie = savedMovies.data.find(elem => (elem.movieId === movie.id && elem.owner === initialUser.data._id));
+          setSavedMoviesList(allSavedMovies.data)
+          const movies = allMovies.map(movie => {
+            const savedMovie = allSavedMovies.data.find(elem => (elem.movieId === movie.id && elem.owner === initialUser.data._id));
             return {
               country: movie.country,
               director: movie.director,
@@ -76,8 +76,10 @@ function App() {
               movieId: movie.id,
               _id: savedMovie ? savedMovie._id : null,
             }
-          }))
-
+          })
+          setMoviesList(movies);
+          localStorage.setItem('movies', JSON.stringify(allMovies));
+          localStorage.setItem('savedMovies', JSON.stringify(allSavedMovies.data));
           const { moviesQuery, moviesShorts } = JSON.parse(localStorage.getItem('moviesFilter'));
           setMoviesFilter({ query: moviesQuery || '', shorts: moviesShorts || false});
           const { savedMoviesQuery, savedMoviesShorts } = JSON.parse(localStorage.getItem('savedMoviesFilter'));
