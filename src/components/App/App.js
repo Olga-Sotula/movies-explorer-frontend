@@ -42,6 +42,7 @@ function App() {
 
   const token = localStorage.getItem('jwt');
 
+  //hooks
   useEffect(() => {
     setToken(token);
   }, []);
@@ -94,13 +95,26 @@ function App() {
     }
   }, [loggedIn]);
 
+  //user, auth
+  function clearCurrentUser() {
+    setLoggedIn(false);
+    setCurrentUser({
+      name: '',
+      email: '',
+    });
+    setMoviesFilter({ query: '', shorts: false });
+    setSavedMoviesFilter({ query: '', shorts: false });
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('moviesFilter');
+    localStorage.removeItem('savedMoviesFilter');
+  }
 
   function handleRegisterSubmit (name, email, password) {
     if (name && password && email){
       auth.sign(password, email, name, "signup").then((res) => {
-        setLoggedIn(true);
         setServerError('');
         history.push('/');
+        handleLoginSubmit (email, password);
       })
       .catch((err) => {
         console.log(err);
@@ -115,17 +129,11 @@ function App() {
   function setToken(token){
     auth.checkToken(token).then((res) => {
       localStorage.setItem('jwt', token);
-      setCurrentUser({
-        id: res.data._id,
-        name: res.data.name,
-        email: res.data.email
-      });
       setLoggedIn(true);
       history.push(pathname);
     })
     .catch((err) => {
-      console.log(err);
-      setLoggedIn(false);
+      clearCurrentUser();
     });
   }
 
@@ -133,8 +141,8 @@ function App() {
   function handleLoginSubmit (email, password) {
     if (password && email){
       auth.sign(password, email, "", "signin").then((res) => {
+        localStorage.setItem('jwt', res.token);
         setLoggedIn(true);
-        setToken(res.token);
         setServerError('');
       })
       .catch((err) => {
@@ -158,13 +166,7 @@ function App() {
   }
 
   function handleLogout() {
-    setLoggedIn(false);
-    setCurrentUser({
-      name: '',
-      email: '',
-      _id:''
-    });
-    localStorage.removeItem('jwt');
+    clearCurrentUser();
     history.push('/');
   }
 
@@ -176,6 +178,7 @@ function App() {
 
   function updateSavedMoviesFilter(filter) {
     setSavedMoviesFilter(filter);
+    localStorage.setItem('savedMoviesFilter', JSON.stringify(filter));
   }
 
   function filterMovies() {
