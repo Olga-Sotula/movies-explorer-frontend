@@ -7,30 +7,27 @@ import './SearchForm.css';
 
 const SearchForm = ( { onSearch } ) => {
   const { pathname } = useLocation();
-
-  const [query, setQuery] = useState('');
-  const [isShorts, setIsShorts] = useState(false);
+  const [filter, setFilter] = useState({ query: '', shorts: false });
 
   useEffect(() => {
     if (pathname === '/movies'){
       const moviesFilter = localStorage.getItem('moviesFilter');
       if (moviesFilter) {
         const { query, shorts } = JSON.parse(localStorage.getItem('moviesFilter'));
-        setQuery(query);
-        setIsShorts(shorts);
-        onSearch({ query, shorts });
+        setFilter({ query: query || '', shorts: shorts || false});
+        onSearch({ query: query, shorts: shorts });
       }
     }
   }, []);
 
   function handleSearch(e) {
     e.preventDefault();
-    onSearch({ query: query, isShorts });
+    onSearch(filter);
   }
 
   function handleCheckShorts() {
-    setIsShorts(!isShorts);
-    onSearch({ query: query, shorts: !isShorts });
+    onSearch({ query: filter.query, shorts: !filter.shorts });
+    setFilter({ ...filter, shorts: !filter.shorts });
   }
 
 
@@ -45,14 +42,14 @@ const SearchForm = ( { onSearch } ) => {
           placeholder='Фильм'
           id='movie'
           name='movie'
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          value={filter.query}
+          onChange={(e) => setFilter({...filter, query: e.target.value})}
         />
         <button className='search-form__submit' type='submit' />
         <div className='search-form__divider'></div>
-        <FilterCheckBox modificator="filter-checkbox_type_in-form" isOn={isShorts} onCheck={handleCheckShorts}/>
+        <FilterCheckBox modificator="filter-checkbox_type_in-form" isOn={filter.shorts} onCheck={handleCheckShorts}/>
       </form>
-      <FilterCheckBox modificator="filter-checkbox_type_in-bar" isOn={isShorts} onCheck={handleCheckShorts}/>
+      <FilterCheckBox modificator="filter-checkbox_type_in-bar" isOn={filter.shorts} onCheck={handleCheckShorts}/>
     </section>
   );
 }

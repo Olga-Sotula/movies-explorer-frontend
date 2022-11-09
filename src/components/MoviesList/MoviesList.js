@@ -25,11 +25,13 @@ const MoviesList = ({ isSaved, status, movies, onSearch, filter, onFilter, onCar
     setCardsIncrement(windowWidth >= 800 ? CARDS_INCREMENT_1280 : CARDS_INCREMENT_800);
     const initialCardsCount = windowWidth >= 800 ? INITIAL_CARDS_COUNT_1280 :
       windowWidth >= 600 ? INITIAL_CARDS_COUNT_800 : INITIAL_CARDS_COUNT_600;
-    if (filter !== prevFilter.current) {
+    if(isSaved){
+      setCardsCount(newFilteredMovies.length);
+    }else if (filter !== prevFilter.current) {
       setCardsCount(Math.min(initialCardsCount, newFilteredMovies.length));
     }
     prevFilter.current = filter;
-  }, [movies, filter, onFilter, windowWidth]);
+  }, [movies, filter, windowWidth]);
 
   function showMoreCards() {
     setCardsCount(Math.min(cardsCount + cardsIncrement, movies.length));
@@ -49,7 +51,7 @@ const MoviesList = ({ isSaved, status, movies, onSearch, filter, onFilter, onCar
           /> :
           (filter.query || status === 'error') && <NoResult error={status === 'error'} />
         }
-        {(cardsCount < filteredMovies.length) && <Button type='button' modificator="button_type_else" onClick={showMoreCards}>Ещё</Button>}
+        {(!isSaved && cardsCount < filteredMovies.length) && <Button type='button' modificator="button_type_else" onClick={showMoreCards}>Ещё</Button>}
       </>
 
       }

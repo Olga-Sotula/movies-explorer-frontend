@@ -78,14 +78,10 @@ function App() {
             }
           }))
 
-          const filter = localStorage.getItem('moviesFilter');
-          if (filter) {
-            setMoviesFilter(filter);
-          }
-          const savedFilter = localStorage.getItem('savedMoviesFilter');
-          if (savedFilter) {
-            setSavedMoviesFilter(savedFilter);
-          }
+          const { moviesQuery, moviesShorts } = JSON.parse(localStorage.getItem('moviesFilter'));
+          setMoviesFilter({ query: moviesQuery || '', shorts: moviesShorts || false});
+          const { savedMoviesQuery, savedMoviesShorts } = JSON.parse(localStorage.getItem('savedMoviesFilter'));
+          setSavedMoviesFilter({ query: savedMoviesQuery || '', shorts: savedMoviesShorts || false});
           setStatus('success');
         })
         .catch((err) => {
@@ -103,9 +99,7 @@ function App() {
     });
     setMoviesFilter({ query: '', shorts: false });
     setSavedMoviesFilter({ query: '', shorts: false });
-    localStorage.removeItem('jwt');
-    localStorage.removeItem('moviesFilter');
-    localStorage.removeItem('savedMoviesFilter');
+    localStorage.clear();
   }
 
   function handleRegisterSubmit (name, email, password) {
