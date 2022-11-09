@@ -12,7 +12,9 @@ export default function MoviesCard({ card, isSaved, onCardLike }) {
 
   return (
     <div className='card'>
-      <img className='card__img' src={card.image} alt={card.nameRU} />
+      <a className='card__link' href={card.trailerLink} target='_blank' rel='noreferrer'>
+        <img className='card__img' src={card.image} alt={card.nameRU} />
+      </a>
       <div className='card__footer'>
         <h2 className='card__title'>
           {card.nameRU}
