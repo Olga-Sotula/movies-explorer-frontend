@@ -12,11 +12,14 @@ const SearchForm = ( { onSearch } ) => {
   const [isShorts, setIsShorts] = useState(false);
 
   useEffect(() => {
-    if (pathname === '/movies' && localStorage.getItem('filter')) {
-      const { query, shorts } = JSON.parse(localStorage.getItem('filter'));
-      setQuery(query);
-      setIsShorts(shorts);
-      onSearch({ query, shorts });
+    if (pathname === '/movies'){
+      const moviesFilter = localStorage.getItem('moviesFilter');
+      if (moviesFilter) {
+        const { query, shorts } = JSON.parse(localStorage.getItem('moviesFilter'));
+        setQuery(query);
+        setIsShorts(shorts);
+        onSearch({ query, shorts });
+      }
     }
   }, []);
 

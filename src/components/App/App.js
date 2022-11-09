@@ -61,7 +61,7 @@ function App() {
           setCurrentUser(initialUser.data);
           setSavedMoviesList(savedMovies.data)
           setMoviesList(movies.map(movie => {
-            const savedMovie = savedMovies.data.find(elem => elem.movieId === movie.id);
+            const savedMovie = savedMovies.data.find(elem => (elem.movieId === movie.id && elem.owner === initialUser.data._id));
             return {
               country: movie.country,
               director: movie.director,
@@ -112,7 +112,7 @@ function App() {
     if (name && password && email){
       auth.sign(password, email, name, "signup").then((res) => {
         setServerError('');
-        history.push('/');
+        history.push('/movies');
         handleLoginSubmit (email, password);
       })
       .catch((err) => {
@@ -142,6 +142,7 @@ function App() {
       auth.sign(password, email, "", "signin").then((res) => {
         localStorage.setItem('jwt', res.token);
         setLoggedIn(true);
+        history.push('/movies');
         setServerError('');
       })
       .catch((err) => {
