@@ -53,7 +53,6 @@ function App() {
   }, [pathname]);
 
   useEffect(() => {
-    //#todo loader
     if (loggedIn) {
       setStatus('process');
       Promise.all([api.getUserInfo(token),api.getMovies(token), moviesApi.getMovies()])
