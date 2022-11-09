@@ -8,7 +8,7 @@ const MoviesCardList = ({ cards, isSaved, onCardLike }) => {
     <section className='cards'>
       <ul className='cards__list'>
         {cards.map(card => (
-          <li key={card.id}>
+          <li key={card.movieId}>
             <MoviesCard card={card} isSaved={isSaved} onCardLike={onCardLike}/>
           </li>
         ))}
