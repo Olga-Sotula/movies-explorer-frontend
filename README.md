@@ -23,3 +23,6 @@ https://soy.movies.nomoredomains.icu/
 ## Ссылка на проект github
 https://github.com/Olga-Sotula/movies-explorer-frontend.git
 
+## Ссылка на пул реквест
+https://github.com/Olga-Sotula/movies-explorer-frontend/pull/6
+
