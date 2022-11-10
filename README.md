@@ -16,6 +16,9 @@ mongoDB, express, node.js
 https://disk.yandex.ru/d/VXRfMWf8Cb8BJg
 
 ## Ссылка на проект
+IP 158.160.10.166
+
+https://soy.movies.nomoredomains.icu/
 
 ## Ссылка на проект github
 https://github.com/Olga-Sotula/movies-explorer-frontend.git
