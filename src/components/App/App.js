@@ -78,10 +78,12 @@ function App() {
             }
           })
           setMoviesList(movies);
-          const { moviesQuery, moviesShorts } = JSON.parse(localStorage.getItem('moviesFilter'));
-          setMoviesFilter({ query: moviesQuery || '', shorts: moviesShorts || false});
-          const { savedMoviesQuery, savedMoviesShorts } = JSON.parse(localStorage.getItem('savedMoviesFilter'));
-          setSavedMoviesFilter({ query: savedMoviesQuery || '', shorts: savedMoviesShorts || false});
+          if (localStorage.getItem('moviesFilter')){
+            setMoviesFilter(JSON.parse(localStorage.getItem('moviesFilter')));
+          }
+          if (localStorage.getItem('savedMoviesFilter')){
+            setSavedMoviesFilter(JSON.parse(localStorage.getItem('savedMoviesFilter')));
+          }
           setStatus('success');
         })
         .catch((err) => {
