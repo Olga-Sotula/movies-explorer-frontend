@@ -36,6 +36,9 @@ class Api {
       .then((res) => {
         return this._handleResponse(res);
       })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   getMovies(token) {

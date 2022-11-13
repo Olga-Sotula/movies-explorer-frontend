@@ -26,7 +26,7 @@ const Profile = ({ onSubmit, onLogout, serverError, serverSuccess }) => {
   const defaultValues = { name: currentUser.name, email: currentUser.email };
   const defaultChanged = { name: false, email: false};
 
-  const { values, handleChange, changed, errors, isValid, setValid } = useFormWithValidation(
+  const { values, handleChange, changed, errors, isValid, setIsValid } = useFormWithValidation(
     defaultValues, defaultChanged, validators);
 
   function handleSubmit(e) {
@@ -34,7 +34,7 @@ const Profile = ({ onSubmit, onLogout, serverError, serverSuccess }) => {
     e.preventDefault();
 
     onSubmit({ name: values.name, email: values.email });
-    setValid(false);
+    setIsValid(false);
   }
 
 

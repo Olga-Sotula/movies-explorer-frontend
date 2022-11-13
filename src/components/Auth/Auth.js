@@ -26,7 +26,7 @@ const defaultChanged = { name: false, email: false,  password: false };
 const Auth = ({ type, onSubmit, serverError }) => {
   const { pathname } = useLocation();
   const validators = getValidators(type);
-  const { values, handleChange, changed, errors, isValid, resetForm } = useFormWithValidation(
+  const { values, handleChange, changed, errors, isValid, setIsValid, resetForm } = useFormWithValidation(
     defaultValues, defaultChanged, validators);
 
   useEffect(() => {
