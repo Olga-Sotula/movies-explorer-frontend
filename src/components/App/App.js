@@ -159,16 +159,10 @@ function App() {
     setStatus('process');
     api.updateUserProfile(data, token)
     .then((newUser) => {
-      if(newUser){
-        setCurrentUser(newUser.data);
-        setServerError('');
-        setServerSuccess(true)
-        setStatus('success');
-      }else{
-        setServerError('Ошибка обновления профайла');
-        setServerSuccess(false)
-        setStatus('error');
-      }
+      setCurrentUser(newUser.data);
+      setServerError('');
+      setServerSuccess(true)
+      setStatus('success');
     })
     .catch((err) => {
       setServerError(err);
