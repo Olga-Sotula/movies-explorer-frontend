@@ -17,6 +17,9 @@ const SearchForm = ( { onSearch, serverInProcess } ) => {
         setFilter({ query: query || '', shorts: shorts || false});
         onSearch({ query: query, shorts: shorts });
       }
+    } else {//saved-movies
+      setFilter({ query: '', shorts: false});
+      onSearch({ query: '', shorts: false });
     }
   }, []);
 
