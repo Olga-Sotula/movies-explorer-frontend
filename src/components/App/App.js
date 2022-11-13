@@ -252,6 +252,7 @@ function App() {
   //info popup
   function closePopup() {
     setIsPopupOpen(false);
+    setStatus('');
   }
 
   function openPopup(message){
