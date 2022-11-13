@@ -124,6 +124,7 @@ function App() {
   function setToken(token){
     auth.checkToken(token).then((res) => {
       localStorage.setItem('jwt', token);
+      setCurrentUser({name: res.data.name, email: res.data.email});
       setLoggedIn(true);
       history.push(pathname);
     })
