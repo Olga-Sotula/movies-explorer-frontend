@@ -11,7 +11,7 @@ import './MoviesList.css';
 import SearchForm from '../SearchForm/SearchForm.js';
 import NoResult from '../NoResult/NoResult';
 
-const MoviesList = ({ isSaved, status, movies, onSearch, filter, onFilter, onCardLike }) => {
+const MoviesList = ({ isSaved, status, movies, onSearch, filter, onFilter, onCardLike, serverInProcess }) => {
   const [filteredMovies, setFilteredMovies] = useState(movies);
   const [cardsCount, setCardsCount] = useState(0);
   const [cardsIncrement, setCardsIncrement] = useState(CARDS_INCREMENT_800);
@@ -39,7 +39,7 @@ const MoviesList = ({ isSaved, status, movies, onSearch, filter, onFilter, onCar
 
   return (
     <main className='movies'>
-      <SearchForm onSearch={onSearch}/>
+      <SearchForm onSearch={onSearch} serverInProcess={serverInProcess}/>
       {status === 'process' ?
         <Preloader/> :
         <>

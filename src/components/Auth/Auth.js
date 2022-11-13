@@ -23,7 +23,7 @@ const getValidators = (type) => {
 const defaultValues = { name: '', email: '', password: '' };
 const defaultChanged = { name: false, email: false,  password: false };
 
-const Auth = ({ type, onSubmit, serverError }) => {
+const Auth = ({ type, onSubmit, serverError, serverInProcess }) => {
   const { pathname } = useLocation();
   const validators = getValidators(type);
   const { values, handleChange, changed, errors, isValid, setIsValid, resetForm } = useFormWithValidation(
@@ -67,6 +67,7 @@ const Auth = ({ type, onSubmit, serverError }) => {
               className='auth__label'>
               Имя
               <input
+                disabled={serverInProcess}
                 type='text'
                 id='name'
                 name='name'
@@ -86,6 +87,7 @@ const Auth = ({ type, onSubmit, serverError }) => {
           className='auth__label'>
           email
           <input
+            disabled={serverInProcess}
             type='email'
             id='email'
             name='email'
@@ -101,6 +103,7 @@ const Auth = ({ type, onSubmit, serverError }) => {
           className='auth__label'>
           Пароль
           <input
+            disabled={serverInProcess}
             type='password'
             id='password'
             name='password'

@@ -106,6 +106,7 @@ function App() {
 
   function handleRegisterSubmit (name, email, password) {
     if (name && password && email){
+      setStatus('process');
       auth.sign(password, email, name, "signup").then((res) => {
         setServerError('');
         history.push('/movies');
@@ -115,7 +116,7 @@ function App() {
         console.log(err);
         setLoggedIn(false);
         setServerError(err);
-
+        setStatus('error');
       });
 
     }
@@ -136,29 +137,35 @@ function App() {
 
   function handleLoginSubmit (email, password) {
     if (password && email){
+      setStatus('process');
       auth.sign(password, email, "", "signin").then((res) => {
         localStorage.setItem('jwt', res.token);
         setLoggedIn(true);
         history.push('/movies');
         setServerError('');
+        setStatus('success');
       })
       .catch((err) => {
         setLoggedIn(false);
         setServerError(err);
+        setStatus('error');
       });
     }
   }
 
   function handleUpdateUser(data) {
+    setStatus('process');
     api.updateUserProfile(data, token)
     .then((newUser) => {
       setCurrentUser(newUser.data);
       setServerError('');
       setServerSuccess(true)
+      setStatus('success');
     })
     .catch((err) => {
       setServerError(err);
       setServerSuccess(false);
+      setStatus('error');
     });
   }
 
@@ -254,6 +261,7 @@ function App() {
           filter={moviesFilter}
           onFilter={filterMovies}
           onCardLike={handleCardLike}
+          serverInProcess={status==='process'}
         />
         <ProtectedRoute
           path="/saved-movies"
@@ -265,6 +273,7 @@ function App() {
           filter={savedMoviesFilter}
           onFilter={filterSavedMovies}
           onCardLike={handleCardLike}
+          serverInProcess={status==='process'}
         />
         <ProtectedRoute
           path="/profile"
@@ -274,12 +283,14 @@ function App() {
           onLogout={handleLogout}
           serverError={serverError}
           serverSuccess={serverSuccess}
+          serverInProcess={status==='process'}
         />
         <Route path="/signin">
           <Login
             loggedIn={loggedIn}
             onSubmit={handleLoginSubmit}
             serverError={serverError}
+            serverInProcess={status==='process'}
           />
         </Route>
         <Route path="/signup">
@@ -287,6 +298,7 @@ function App() {
             loggedIn={loggedIn}
             onSubmit={handleRegisterSubmit}
             serverError={serverError}
+            serverInProcess={status==='process'}
           />
         </Route>
         <Route path="*">

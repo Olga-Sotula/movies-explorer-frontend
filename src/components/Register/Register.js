@@ -2,7 +2,7 @@ import React from 'react'
 import { Redirect, Route } from 'react-router-dom';
 import Auth from '../Auth/Auth';
 
-const Register = ({ loggedIn, onSubmit, serverError }) => {
+const Register = ({ loggedIn, onSubmit, serverError, serverInProcess }) => {
   if ( loggedIn ){
     return (
       <Route>
@@ -11,7 +11,12 @@ const Register = ({ loggedIn, onSubmit, serverError }) => {
     )
   } else {
     return (
-      <Auth loggedIn={loggedIn} type = 'signup' onSubmit={onSubmit} serverError={serverError} />
+      <Auth
+        loggedIn={loggedIn}
+        type = 'signup'
+        onSubmit={onSubmit}
+        serverError={serverError}
+        serverInProcess={serverInProcess} />
     )
   }
 }

@@ -20,7 +20,7 @@ const getValidators = (currentValues) => {
   )
 };
 
-const Profile = ({ onSubmit, onLogout, serverError, serverSuccess }) => {
+const Profile = ({ onSubmit, onLogout, serverError, serverSuccess, serverInProcess }) => {
   const currentUser = useContext(CurrentUserContext);
   const validators = getValidators(currentUser);
   const defaultValues = { name: currentUser.name, email: currentUser.email };
@@ -49,6 +49,7 @@ const Profile = ({ onSubmit, onLogout, serverError, serverSuccess }) => {
               className="profile__label">
               Имя
               <input
+                disabled={serverInProcess}
                 type='text'
                 id='name'
                 name='name'
@@ -66,6 +67,7 @@ const Profile = ({ onSubmit, onLogout, serverError, serverSuccess }) => {
               className="profile__label">
               Email
               <input
+                disabled={serverInProcess}
                 type='email'
                 id='email'
                 name='email'

@@ -5,7 +5,7 @@ import FilterCheckBox from "../FilterCheckbox/FilterCheckbox";
 import searchIconPath from '../../images/search-icon-input.svg';
 import './SearchForm.css';
 
-const SearchForm = ( { onSearch } ) => {
+const SearchForm = ( { onSearch, serverInProcess } ) => {
   const { pathname } = useLocation();
   const [filter, setFilter] = useState({ query: '', shorts: false });
 
@@ -37,6 +37,7 @@ const SearchForm = ( { onSearch } ) => {
       <form className='search-form__form' onSubmit={handleSearch}>
         <img src={searchIconPath} alt='Лупа' className='search-form__icon' />
         <input className='search-form__input'
+          disabled={serverInProcess}
           type='text'
           required
           placeholder='Фильм'
