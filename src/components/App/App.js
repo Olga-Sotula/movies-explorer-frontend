@@ -277,12 +277,14 @@ function App() {
         />
         <Route path="/signin">
           <Login
+            loggedIn={loggedIn}
             onSubmit={handleLoginSubmit}
             serverError={serverError}
           />
         </Route>
         <Route path="/signup">
           <Register
+            loggedIn={loggedIn}
             onSubmit={handleRegisterSubmit}
             serverError={serverError}
           />
