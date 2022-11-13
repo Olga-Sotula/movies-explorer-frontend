@@ -86,7 +86,7 @@ const Profile = ({ onSubmit, onLogout, serverError, serverSuccess, serverInProce
             disabled={!isValid}
           >
             Редактировать
-            {serverError && <p className='profile__server proile__server_error'>{serverError}</p>}
+            {serverError!=='' && <p className='profile__server profile__server_error'>{serverError}</p>}
             {serverSuccess && <p className='profile__server profile__server_success'>Профиль обновлен</p>}
           </button>
           <Link to='/'>
