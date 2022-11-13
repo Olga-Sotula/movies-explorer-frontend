@@ -18,6 +18,7 @@ import Login from '../Login/Login.js';
 import Register from '../Register/Register.js';
 import Footer from '../Footer/Footer';
 import NotFound from '../NotFound/NotFound';
+import Popup from '../Popup/Popup';
 
 function App() {
   const { pathname } = useLocation();
@@ -36,6 +37,8 @@ function App() {
   const [moviesList, setMoviesList] = useState([]);
   const [savedMoviesList, setSavedMoviesList] = useState([]);
   const [status, setStatus] = useState('success'); //success, error, process
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [popupMessage, setPopupMessage] = useState('');
 
   const isHeader = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile' ? true : false;
   const isFooter = pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' ? true : false;
@@ -128,6 +131,8 @@ function App() {
     })
     .catch((err) => {
       clearCurrentUser();
+      setStatus('error');
+      openPopup('Ошибка авторизации');
     });
   }
 
@@ -216,9 +221,12 @@ function App() {
             const newState = state.map((movie) => (movie.movieId === newCard.data.movieId) ? newCard.data : movie);
             return newState;
           });
+          setStatus('success');
+          openPopup('Фильм сохранен');
         })
         .catch((err) => {
-          console.log(err);
+          setStatus('error');
+          openPopup('Ошибка сохранения фильма');
         });
     } else {
       api.deleteCard(card._id, token)
@@ -231,13 +239,25 @@ function App() {
             })
             return newState;
           });
+          setStatus('success');
+          openPopup('Фильм удален');
         })
         .catch((err) => {
-          console.log(err);
+          setStatus('error');
+          openPopup('Ошибка удаления фильма');
         });
     }
   }
 
+  //info popup
+  function closePopup() {
+    setIsPopupOpen(false);
+  }
+
+  function openPopup(message){
+    setIsPopupOpen(true);
+    setPopupMessage(message)
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -303,6 +323,11 @@ function App() {
       </Switch>}
       {isFooter && <Footer/>}
       </div>
+      <Popup
+        isOpen={isPopupOpen}
+        type={status}
+        title={popupMessage}
+        onClose={closePopup}/>
     </CurrentUserContext.Provider>
   );
 }
