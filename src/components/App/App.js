@@ -81,9 +81,6 @@ function App() {
           if (localStorage.getItem('moviesFilter')){
             setMoviesFilter(JSON.parse(localStorage.getItem('moviesFilter')));
           }
-          if (localStorage.getItem('savedMoviesFilter')){
-            setSavedMoviesFilter(JSON.parse(localStorage.getItem('savedMoviesFilter')));
-          }
           setStatus('success');
         })
         .catch((err) => {
@@ -182,7 +179,6 @@ function App() {
 
   function updateSavedMoviesFilter(filter) {
     setSavedMoviesFilter(filter);
-    localStorage.setItem('savedMoviesFilter', JSON.stringify(filter));
   }
 
   function filterMovies() {
