@@ -1,20 +1,18 @@
 import React from 'react';
 
 import MoviesCard from '../MoviesCard/MoviesCard.js';
-import Button from '../Button/Button.js';
 import './MoviesCardList.css';
 
-const MoviesCardList = ({ cards, isSaved }) => {
+const MoviesCardList = ({ cards, isSaved, onCardLike }) => {
   return (
     <section className='cards'>
       <ul className='cards__list'>
         {cards.map(card => (
-          <li key={card.id}>
-            <MoviesCard card={card} isSaved={isSaved}/>
+          <li key={card.movieId}>
+            <MoviesCard card={card} isSaved={isSaved} onCardLike={onCardLike}/>
           </li>
         ))}
       </ul>
-      <Button type='button' modificator="button_type_else">Ещё</Button>
     </section>
   )
 }

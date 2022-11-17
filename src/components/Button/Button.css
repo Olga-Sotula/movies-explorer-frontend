@@ -22,13 +22,6 @@
   background-color: var(--accent-color);
 }
 
-.button_type_nav-menu {
-  color: var(--primary-color);
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 18px;
-}
-
 .button_type_popup-menu {
   color: var(--primary-color);
   font-weight: 400;
@@ -44,7 +37,27 @@
   line-height: 18px;
 }
 
+.button_type_nav-movies-main {
+  padding: 8px 8px;
+  color: var(--secondary-color);
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+}
+
 .button_type_account {
+  color: var(--primary-color);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 0;
+}
+
+.button_type_account-main {
+  color: var(--secondary-color);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
   padding: 0;
 }
 

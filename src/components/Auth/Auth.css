@@ -36,6 +36,7 @@
 .auth__label {
   margin-top: 20px;
   display: block;
+  position: relative;
   font-size: 10px;
   line-height: 1.2;
   color: var(--dghost-color);
@@ -53,6 +54,19 @@
   border-radius: 8px;
 }
 
+.auth__error {
+  margin: 0;
+  font-size: 10px;
+  line-height: 1;
+  color: #f00;
+  position: absolute;
+  bottom: -13px;
+}
+
+.auth__error_server {
+  top: -170px;
+}
+
 .auth__input:focus {
   outline: 1px solid var(--input-focus-color);
 }
@@ -61,6 +75,7 @@
   width: 100%;
   margin-top: 90px;
   padding: 12px 0 12px;
+  position: relative;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
@@ -76,6 +91,11 @@
 
 .auth__submit:hover {
   opacity: 0.6;
+}
+
+.auth__submit:disabled {
+  background-color: var(--dghost-color);
+  cursor: auto;
 }
 
 .auth__quest {
